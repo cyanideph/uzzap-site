@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UZZAP — Classic J2ME Chat, Reborn for Android</title>
+<meta name="description" content="Download Uzzap — a modern Android/Kotlin recreation of the classic Nokia/J2ME mobile chat experience. Philippine chat rooms, buddies, IM, moderation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#8EEF04;
+  --green-dim:#5da302;
+  --ink:#0a0f0a;
+  --panel:#0d130d;
+  --panel2:#111a11;
+  --line:#1f2b1f;
+  --txt:#e8f5e8;
+  --mut:#9db89d;
+  --px:'Press Start 2P',monospace;
+  --sans:'Inter',system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--txt);font-family:var(--sans);overflow-x:hidden}
+::selection{background:var(--green);color:#000}
+
+/* ---------- CRT scanlines + vignette ---------- */
+.scanlines{position:fixed;inset:0;pointer-events:none;z-index:50;mix-blend-mode:overlay;opacity:.5;
+  background:repeating-linear-gradient(0deg,rgba(255,255,255,.06) 0 1px,transparent 1px 3px)}
+.vignette{position:fixed;inset:0;pointer-events:none;z-index:49;
+  background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.55) 100%)}
+
+/* ---------- nav ---------- */
+nav{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;gap:26px;
+  padding:16px 28px;background:linear-gradient(180deg,rgba(5,8,5,.92),rgba(5,8,5,.55) 70%,transparent);
+  backdrop-filter:blur(8px)}
+.logo{font-family:var(--px);font-size:18px;color:var(--green);text-shadow:0 0 12px rgba(142,239,4,.8),0 0 40px rgba(142,239,4,.35);letter-spacing:2px}
+.logo span{color:#fff;font-size:9px;vertical-align:super;text-shadow:none}
+nav a.nl{color:var(--mut);text-decoration:none;font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;transition:.2s}
+nav a.nl:hover{color:var(--green)}
+nav .spacer{flex:1}
+.badge{font-family:var(--px);font-size:8px;color:#000;background:var(--green);padding:6px 10px;border-radius:3px;box-shadow:0 0 18px rgba(142,239,4,.5)}
+@media(max-width:760px){nav a.nl{display:none}}
+
+/* ---------- hero ---------- */
+#hero{position:relative;height:100vh;min-height:640px;display:flex;align-items:center;overflow:hidden}
+#scene{position:absolute;inset:0;z-index:1}
+.hero-inner{position:relative;z-index:5;width:min(1200px,92vw);margin:0 auto;padding-top:40px}
+.kicker{font-family:var(--px);font-size:10px;color:var(--green);letter-spacing:3px;margin-bottom:22px;opacity:.9}
+h1{font-family:var(--px);font-size:clamp(34px,6.4vw,74px);line-height:1.25;color:#fff;
+  text-shadow:0 0 14px rgba(142,239,4,.65),0 4px 0 #1c3a05,0 10px 44px rgba(0,0,0,.8)}
+h1 em{font-style:normal;color:var(--green)}
+.sub{margin:22px 0 34px;max-width:560px;color:var(--mut);font-size:clamp(14px,1.6vw,17px);line-height:1.7}
+.sub b{color:var(--txt)}
+.cta-row{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+.btn{font-family:var(--px);font-size:11px;text-decoration:none;padding:18px 26px;border-radius:6px;cursor:pointer;
+  display:inline-flex;align-items:center;gap:10px;transition:.18s;letter-spacing:1px}
+.btn-primary{background:var(--green);color:#061100;border:2px solid #b9ff5e;
+  box-shadow:0 0 26px rgba(142,239,4,.55),inset 0 -4px 0 rgba(0,0,0,.25)}
+.btn-primary:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 0 46px rgba(142,239,4,.85),inset 0 -4px 0 rgba(0,0,0,.25)}
+.btn-ghost{background:rgba(255,255,255,.04);color:var(--txt);border:2px solid var(--line)}
+.btn-ghost:hover{border-color:var(--green);color:var(--green)}
+.meta-line{margin-top:18px;font-size:12px;color:var(--mut);letter-spacing:.06em}
+.meta-line b{color:var(--green)}
+.scroll-hint{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:5;color:var(--mut);
+  font-family:var(--px);font-size:8px;letter-spacing:3px;animation:bob 2s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
+
+/* ---------- ticker ---------- */
+.ticker{position:relative;z-index:6;background:var(--green);color:#061100;overflow:hidden;
+  border-top:3px solid #b9ff5e;border-bottom:3px solid #4a7d02;padding:12px 0}
+.ticker-track{display:flex;gap:48px;white-space:nowrap;font-family:var(--px);font-size:11px;
+  animation:scroll 26s linear infinite;width:max-content}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* ---------- sections ---------- */
+section{padding:110px 0;position:relative}
+.wrap{width:min(1200px,92vw);margin:0 auto}
+h2{font-family:var(--px);font-size:clamp(18px,3vw,30px);color:#fff;margin-bottom:14px;line-height:1.5}
+h2 em{font-style:normal;color:var(--green)}
+.sec-sub{color:var(--mut);max-width:640px;line-height:1.7;margin-bottom:54px}
+
+/* features */
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(262px,1fr));gap:18px}
+.feat{background:linear-gradient(160deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:12px;
+  padding:26px;position:relative;overflow:hidden;transition:.25s}
+.feat::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--green),transparent);opacity:0;transition:.25s}
+.feat:hover{transform:translateY(-6px);border-color:#2e4a2e;box-shadow:0 20px 50px rgba(0,0,0,.5)}
+.feat:hover::before{opacity:1}
+.feat .fi{font-family:var(--px);font-size:22px;color:var(--green);margin-bottom:16px;text-shadow:0 0 14px rgba(142,239,4,.6)}
+.feat h3{font-family:var(--px);font-size:11px;color:#fff;margin-bottom:12px;line-height:1.7}
+.feat p{color:var(--mut);font-size:13.5px;line-height:1.65}
+
+/* screenshots */
+.shots{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
+.shot{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#000;position:relative;cursor:pointer;transition:.25s}
+.shot img{width:100%;display:block;aspect-ratio:9/19;object-fit:cover;object-position:top;transition:.35s}
+.shot:hover{border-color:var(--green);box-shadow:0 0 26px rgba(142,239,4,.35)}
+.shot:hover img{transform:scale(1.06)}
+.shot .cap{position:absolute;bottom:0;left:0;right:0;padding:10px 12px;font-size:11px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--green);background:linear-gradient(0deg,rgba(0,0,0,.9),transparent)}
+
+/* lightbox */
+#lightbox{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;cursor:zoom-out}
+#lightbox.open{display:flex}
+#lightbox img{max-height:92vh;max-width:92vw;border:1px solid var(--green);border-radius:10px;box-shadow:0 0 60px rgba(142,239,4,.3)}
+
+/* builds */
+.builds{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--panel)}
+.b-head,.b-row{display:grid;grid-template-columns:110px 1fr 150px 150px;gap:14px;padding:18px 22px;align-items:center}
+.b-head{background:#0a0f0a;font-family:var(--px);font-size:8px;color:var(--mut);letter-spacing:2px;text-transform:uppercase}
+.b-row{border-top:1px solid var(--line);transition:.2s}
+.b-row:hover{background:var(--panel2)}
+.b-ver{font-family:var(--px);font-size:10px;color:var(--green)}
+.b-log{color:var(--mut);font-size:13px;line-height:1.6}
+.b-date{color:var(--mut);font-size:12px}
+.b-dl{font-family:var(--px);font-size:8px;text-align:center;text-decoration:none;color:#061100;background:var(--green);
+  padding:12px 8px;border-radius:5px;box-shadow:0 0 16px rgba(142,239,4,.4)}
+.b-dl:hover{transform:scale(1.05)}
+@media(max-width:700px){.b-head,.b-row{grid-template-columns:1fr 1fr;row-gap:10px}.b-head span:nth-child(n+3){display:none}}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:50px}
+.step{border:1px dashed #2c402c;border-radius:12px;padding:22px}
+.step .n{font-family:var(--px);color:var(--green);font-size:14px;margin-bottom:12px}
+.step p{color:var(--mut);font-size:13.5px;line-height:1.65}
+.step code{color:var(--green);background:#0a140a;padding:2px 6px;border-radius:4px;font-size:12px}
+
+footer{border-top:1px solid var(--line);padding:60px 0 40px;color:var(--mut);font-size:12.5px;line-height:1.8}
+footer .wrap{display:flex;flex-direction:column;gap:14px}
+footer a{color:var(--green);text-decoration:none}
+.fine{opacity:.6;font-size:11px;max-width:760px}
+</style>
+</head>
+<body>
+<div class="scanlines"></div>
+<div class="vignette"></div>
+<nav>
+  <div class="logo">UZZAP<span>BETA</span></div>
+  <a class="nl" href="#features">Features</a>
+  <a class="nl" href="#download">Download</a>
+  <a class="nl" href="https://github.com/cyanideph/UZZAP-OLD-JAVA-APP-TO-ANDROID" target="_blank" rel="noopener">GitHub</a>
+  <div class="spacer"></div>
+  <div class="badge">v1.0-beta.7</div>
+</nav>
+
+<header id="hero">
+  <canvas id="scene"></canvas>
+  <div class="hero-inner">
+    <div class="kicker">★ MODERN RECREATION BY CY ★</div>
+    <h1>THE CLASSIC<br><em>J2ME CHAT</em><br>REBORN.</h1>
+    <p class="sub">Remember chatting in <b>Metro Manila</b> on your Nokia? Uzzap is back — rebuilt in
+      <b>Kotlin + Supabase</b> for Android. Same pixel icons, same <b>c01–c30 color codes</b>, same emoticons.
+      New engine, old soul.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="uzzap-debug.apk" download>⬇&nbsp; DOWNLOAD APK</a>
+      <a class="btn btn-ghost" href="https://github.com/cyanideph/UZZAP-OLD-JAVA-APP-TO-ANDROID" target="_blank" rel="noopener">⌥&nbsp; SOURCE CODE</a>
+    </div>
+    <div class="meta-line">Android 9.0+ · <b>8.1 MB</b> · Debug build · Supabase backend online</div>
+  </div>
+  <div class="scroll-hint">▼ SCROLL</div>
+</header>
+
+<div class="ticker"><div class="ticker-track" id="ticker">
+  <span>WELCOME TO METRO MANILA, cy!</span><span>★</span><span>c01c02c03 COLOR CODES</span><span>★</span>
+  <span>17 PHILIPPINE REGIONS</span><span>★</span><span>BUDDIES • IM • EM</span><span>★</span>
+  <span>PIRATE DOLPHIN EMOTICONS</span><span>★</span><span>MODERATOR SANCTIONS</span><span>★</span>
+  <span>WELCOME TO METRO MANILA, cy!</span><span>★</span><span>c01c02c03 COLOR CODES</span><span>★</span>
+  <span>17 PHILIPPINE REGIONS</span><span>★</span><span>BUDDIES • IM • EM</span><span>★</span>
+  <span>PIRATE DOLPHIN EMOTICONS</span><span>★</span><span>MODERATOR SANCTIONS</span><span>★</span>
+</div></div>
+
+<section id="features">
+  <div class="wrap">
+    <h2>EVERYTHING YOU REMEMBER,<br><em>NONE OF THE CARRIER FEES.</em></h2>
+    <p class="sec-sub">The original Nokia/J2ME experience — recreated screen by screen: softkeys, title bars,
+      the app grid, even the dolphin. Running on a modern realtime backend.</p>
+    <div class="feat-grid">
+      <div class="feat"><div class="fi">▤</div><h3>PHILIPPINE CHAT ROOMS</h3><p>17 regions, 80+ province rooms — from NCR (0/20) to BARMM. Join, whisper, invite, report. Live occupancy counts.</p></div>
+      <div class="feat"><div class="fi">☺</div><h3>ORIGINAL EMOTICONS</h3><p>The complete 2000s Uzzap smiley set — blue bubbles, hearts, roses, kisses, and the famous pirate dolphin 🐬.</p></div>
+      <div class="feat"><div class="fi">c01</div><h3>COLOR CODES</h3><p>Full c01–c30 inline markup, rendered exactly like the original — pink, orange, teal, gold, right in your messages.</p></div>
+      <div class="feat"><div class="fi">☻</div><h3>BUDDIES & PRESENCE</h3><p>Groups, add/rename buddies, live online/offline/away status with the classic yellow E-icons and unread badges.</p></div>
+      <div class="feat"><div class="fi">✉</div><h3>PRIVATE MESSAGING</h3><p>1-on-1 IM with delivery & read receipt tracking, draft editing, and push notifications that deep-link straight into the chat.</p></div>
+      <div class="feat"><div class="fi">🛡</div><h3>MODERATION SUITE</h3><p>Report queue, warn / mute / kick / ban with expiry, full audit log, and a Supabase-enforced moderator console.</p></div>
+      <div class="feat"><div class="fi">▦</div><h3>J2ME AUTHENTIC UI</h3><p>Softkey bars, screen-by-screen navigation, LCDUI-style alerts, the S40 app grid — every pixel faithful, rebuilt natively.</p></div>
+      <div class="feat"><div class="fi">⚙</div><h3>MODERN UNDERNEATH</h3><p>Kotlin, Supabase auth + Postgres, FCM push, 5 themes (classic/dark/black/blue/green), offline mode, diagnostics console.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="download">
+  <div class="wrap">
+    <h2>GET THE <em>BUILD.</em></h2>
+    <p class="sec-sub">Sideload the APK and you're in. Supabase account required — sign up right in the app.</p>
+    <div class="builds">
+      <div class="b-head"><span>Version</span><span>Changelog</span><span>Date</span><span></span></div>
+      <div class="b-row">
+        <span class="b-ver">1.0-beta.7</span>
+        <span class="b-log">J2ME MIDP UI recreation across EM, Profile, Settings, IM · new pixel icon set (padlock, muted bell, edit, reply, blocked, outbox) · custom launcher icon · Supabase backend</span>
+        <span class="b-date">2026-09-17</span>
+        <a class="b-dl" href="uzzap-debug.apk" download>⬇ APK · 8.1 MB</a>
+      </div>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="n">01</div><p>Download <code>uzzap-debug.apk</code> on your Android phone (9.0+).</p></div>
+      <div class="step"><div class="n">02</div><p>Tap the file and allow <code>Install from unknown sources</code> when prompted.</p></div>
+      <div class="step"><div class="n">03</div><p>Open Uzzap, tap <code>Register a New Account</code>, pick your region — and chat like it's 2004.</p></div>
+      <div class="step"><div class="n">04</div><p>New builds? Just reinstall — your account lives safely in Supabase.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div><b style="font-family:var(--px);font-size:12px;color:var(--green)">UZZAP</b> — Modern Recreation by CY · 2026</div>
+    <div><a href="https://github.com/cyanideph/UZZAP-OLD-JAVA-APP-TO-ANDROID" target="_blank" rel="noopener">github.com/cyanideph/UZZAP-OLD-JAVA-APP-TO-ANDROID</a></div>
+    <p class="fine">This is an independent, unofficial recreation. The original Nokia/J2ME Uzzap application, its decompiled source,
+      historical assets and trademarks are separate materials and are not claimed as original CY work. Built with Kotlin,
+      Three.js, and nostalgia.</p>
+  </div>
+</footer>
+<script type="importmap">
+{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"}}
+</script>
+<script type="module">
+import * as THREE from 'three';
+
+const canvas = document.getElementById('scene');
+let renderer;
+try {
+  renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:true});
+} catch(e) {
+  canvas.style.background = 'radial-gradient(circle at 70% 40%, #14240a, #050805 70%)';
+  throw e;
+}
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.setSize(innerWidth, innerHeight);
+
+const scene = new THREE.Scene();
+scene.fog = new THREE.FogExp2(0x050805, 0.055);
+
+const camera = new THREE.PerspectiveCamera(42, innerWidth/innerHeight, 0.1, 100);
+camera.position.set(0, 0.1, 8.4);
+
+/* ---------- lights ---------- */
+scene.add(new THREE.AmbientLight(0x2a3a2a, 1.2));
+const key = new THREE.PointLight(0x8EEF04, 60, 40, 1.8); key.position.set(5, 4, 6); scene.add(key);
+const rim = new THREE.DirectionalLight(0xbfd9ff, 1.4); rim.position.set(-6, 3, -4); scene.add(rim);
+const fill = new THREE.PointLight(0xffffff, 14, 30, 2); fill.position.set(-3, -2, 5); scene.add(fill);
+
+/* ---------- J2ME screen texture ---------- */
+function screenTexture(){
+  const c = document.createElement('canvas'); c.width = 256; c.height = 384;
+  const x = c.getContext('2d');
+  x.fillStyle = '#F2F2F2'; x.fillRect(0,0,256,384);
+  // title bar
+  x.fillStyle = '#141414'; x.fillRect(0,0,256,34);
+  x.fillStyle = '#fff'; x.font = 'bold 15px monospace'; x.textBaseline='middle';
+  x.fillText('Chat - Metro Manila', 10, 18);
+  const g = x.createRadialGradient(236,17,2,236,17,10);
+  g.addColorStop(0,'#d6ff9a'); g.addColorStop(1,'#4a7d02');
+  x.fillStyle = g; x.beginPath(); x.arc(236,17,10,0,7); x.fill();
+  // tabs
+  x.fillStyle='#3a3a3a'; x.fillRect(0,34,256,26);
+  for(let i=0;i<3;i++){
+    x.fillStyle='#cfe87a'; x.fillRect(10+i*44,38,24,18);
+    x.fillStyle='#7d8a3a'; x.fillRect(12+i*44,40,20,14);
+    x.fillStyle='#eef7c0'; x.fillRect(14+i*44,42,10,3);
+  }
+  // messages
+  const lines = [
+    ['CY:','#c00000'],['testtest test test','#E0119B'],
+    ['CY:','#c00000'],['hello from uzzap!','#F7941D'],
+    ['CY:','#c00000'],['c05c06c07 colors','#0000CC'],
+    ['',''],['Welcome to Metro Manila, cy!','#0000CC'],
+    ['xlAW:','#c00000'],['🐬','#333'],
+  ];
+  let y = 84; 
+  x.font = '15px monospace';
+  for(const [t,col] of lines){
+    x.fillStyle = col; x.fillText(t, 12, y); y += 22;
+  }
+  // composer
+  x.fillStyle='#DEDEDE'; x.fillRect(8,322,240,30);
+  x.strokeStyle='#9a9a9a'; x.strokeRect(8.5,322.5,240,30);
+  x.fillStyle='#666'; x.font='14px monospace'; x.fillText('Type a message', 16, 338);
+  // softkeys
+  x.fillStyle='#141414'; x.fillRect(0,362,256,22);
+  x.fillStyle='#fff'; x.font='12px monospace';
+  x.fillText('Options', 10, 374); x.fillText('Buddies', 196, 374);
+  const t = new THREE.CanvasTexture(c);
+  t.colorSpace = THREE.SRGBColorSpace;
+  return t;
+}
+
+/* ---------- retro phone ---------- */
+const phone = new THREE.Group();
+const bodyMat = new THREE.MeshStandardMaterial({color:0x2a3324, roughness:0.45, metalness:0.55});
+const body = new THREE.Mesh(new THREE.BoxGeometry(2.35, 4.75, 0.5), bodyMat);
+phone.add(body);
+// green edge glow strip
+const strip = new THREE.Mesh(new THREE.BoxGeometry(2.39, 0.06, 0.52),
+  new THREE.MeshStandardMaterial({color:0x8EEF04, emissive:0x8EEF04, emissiveIntensity:1.6}));
+strip.position.y = 2.2; phone.add(strip);
+const strip2 = strip.clone(); strip2.position.y = -2.2; phone.add(strip2);
+// screen bezel + screen
+const bezel = new THREE.Mesh(new THREE.BoxGeometry(2.05, 3.05, 0.08),
+  new THREE.MeshStandardMaterial({color:0x0c0f0c, roughness:0.3, metalness:0.6}));
+bezel.position.set(0, 0.62, 0.26); phone.add(bezel);
+const screen = new THREE.Mesh(new THREE.PlaneGeometry(1.85, 2.78),
+  new THREE.MeshBasicMaterial({map: screenTexture()}));
+screen.position.set(0, 0.62, 0.31); phone.add(screen);
+// earpiece + logo dot
+const ear = new THREE.Mesh(new THREE.BoxGeometry(0.7, 0.07, 0.05),
+  new THREE.MeshStandardMaterial({color:0x111511, roughness:0.8}));
+ear.position.set(0, 2.32, 0.26); phone.add(ear);
+// keypad
+const kpMat = new THREE.MeshStandardMaterial({color:0x39422f, roughness:0.6, metalness:0.3});
+for(let r=0;r<4;r++) for(let col=0;col<3;col++){
+  const b = new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.26, 0.1), kpMat);
+  b.position.set((col-1)*0.62, -0.98 - r*0.36, 0.28);
+  phone.add(b);
+}
+// antenna
+const ant = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.06, 0.7, 10),
+  new THREE.MeshStandardMaterial({color:0x1c221a, roughness:0.5}));
+ant.position.set(0.95, 2.6, 0); phone.add(ant);
+const antTip = new THREE.Mesh(new THREE.SphereGeometry(0.075, 10, 10),
+  new THREE.MeshStandardMaterial({color:0x8EEF04, emissive:0x8EEF04, emissiveIntensity:2}));
+antTip.position.set(0.95, 2.96, 0); phone.add(antTip);
+
+phone.rotation.set(0.06, -0.42, 0.03);
+scene.add(phone);
+
+/* ---------- floating chat bubbles ---------- */
+function bubbleTexture(text, fg='#111', bg='#ffffff', accent='#8EEF04'){
+  const c = document.createElement('canvas'); c.width=256; c.height=128;
+  const x=c.getContext('2d');
+  x.fillStyle=bg;
+  const r=26; x.beginPath();
+  x.roundRect(6,6,244,100,r); x.fill();
+  x.lineWidth=6; x.strokeStyle='#444'; x.stroke();
+  x.beginPath(); x.moveTo(40,104); x.lineTo(28,122); x.lineTo(66,104); x.fillStyle=bg; x.fill();
+  x.strokeStyle='#444'; x.beginPath(); x.moveTo(40,104); x.lineTo(28,122); x.lineTo(66,104); x.stroke();
+  x.fillStyle=fg; x.font='bold 30px monospace'; x.textBaseline='middle';
+  x.fillText(text, 26, 56);
+  x.fillStyle=accent; x.fillRect(14,14,40,8);
+  const t=new THREE.CanvasTexture(c); t.colorSpace=THREE.SRGBColorSpace; return t;
+}
+const bubbles=[];
+const bubbleDefs=[
+  {t:'hello! 👋', orbit:3.4, speed:0.30, y:1.4, s:1.0},
+  {t:'c01c02 uzzap', orbit:3.9, speed:-0.22, y:-0.6, s:0.85},
+  {t:'🐬🐬🐬', orbit:3.1, speed:0.26, y:0.2, s:0.8},
+  {t:'welcome!', orbit:4.3, speed:0.18, y:2.0, s:0.9},
+  {t:'EM • IM • CHAT', orbit:3.6, speed:-0.28, y:-1.8, s:0.7},
+  {t:'2004 ✦ 2026', orbit:4.6, speed:0.15, y:0.9, s:0.75},
+];
+bubbleDefs.forEach((d,i)=>{
+  const m = new THREE.Mesh(new THREE.PlaneGeometry(1.7*d.s, 0.85*d.s),
+    new THREE.MeshBasicMaterial({map:bubbleTexture(d.t), transparent:true, side:THREE.DoubleSide}));
+  m.userData = {orbit:d.orbit, speed:d.speed, baseY:d.y, phase:i*1.1};
+  bubbles.push(m); scene.add(m);
+});
+
+/* ---------- particles ---------- */
+const pGeo = new THREE.BufferGeometry();
+const N = 550, pos = new Float32Array(N*3);
+for(let i=0;i<N;i++){
+  pos[i*3]=(Math.random()-0.5)*30;
+  pos[i*3+1]=(Math.random()-0.5)*18;
+  pos[i*3+2]=(Math.random()-0.5)*16-2;
+}
+pGeo.setAttribute('position', new THREE.BufferAttribute(pos,3));
+const points = new THREE.Points(pGeo, new THREE.PointsMaterial({
+  color:0x8EEF04, size:0.05, transparent:true, opacity:0.6, sizeAttenuation:true}));
+scene.add(points);
+const points2 = new THREE.Points(pGeo.clone(), new THREE.PointsMaterial({
+  color:0xffffff, size:0.03, transparent:true, opacity:0.35}));
+points2.rotation.y = 1.3; scene.add(points2);
+
+/* ---------- interaction + loop ---------- */
+let mx=0, my=0;
+addEventListener('pointermove', e=>{
+  mx=(e.clientX/innerWidth-0.5)*2;
+  my=(e.clientY/innerHeight-0.5)*2;
+});
+function layout(){
+  const small = innerWidth < 760;
+  phone.position.set(small?0:2.1, small?1.4:0, small?-1.5:0);
+  phone.scale.setScalar(small?0.72:1);
+  camera.position.z = small?10:8.4;
+}
+layout();
+addEventListener('resize', ()=>{
+  camera.aspect=innerWidth/innerHeight; camera.updateProjectionMatrix();
+  renderer.setSize(innerWidth, innerHeight); layout();
+});
+
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const clock = new THREE.Clock();
+function tick(){
+  const t = clock.getElapsedTime();
+  phone.rotation.y += (((-0.42)+mx*0.35) - phone.rotation.y)*0.04 + Math.sin(t*0.6)*0.0012;
+  phone.rotation.x += ((0.06+my*0.18) - phone.rotation.x)*0.04;
+  phone.position.y += (((innerWidth<760?1.4:0) + Math.sin(t*0.9)*0.16) - phone.position.y)*0.05;
+  bubbles.forEach(b=>{
+    const u=b.userData, a=t*u.speed+u.phase;
+    b.position.set(Math.cos(a)*u.orbit + (innerWidth<760?0:1.2), u.baseY+Math.sin(t*0.8+u.phase)*0.22, Math.sin(a)*u.orbit*0.55);
+    b.lookAt(camera.position);
+  });
+  points.rotation.y = t*0.02; points2.rotation.y = 1.3 - t*0.014;
+  renderer.render(scene, camera);
+  if(!reduced) requestAnimationFrame(tick);
+}
+tick();
+</script>
+</body>
+</html>
