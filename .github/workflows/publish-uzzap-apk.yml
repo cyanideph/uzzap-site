@@ -26,4 +26,5 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add uzzap-debug.apk
           git commit -m "Publish latest Uzzap debug APK" || echo "APK unchanged"
+          git pull --rebase origin main
           git push
