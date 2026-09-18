@@ -2,3 +2,5 @@
 
 Official APK builds for UZZAP, the J2ME MIDP chat recreation.
 Live site: https://cyanideph.github.io/uzzap-site/
+
+Latest APK publication workflow is configured in GitHub Actions.
