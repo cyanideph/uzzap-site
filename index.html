@@ -124,9 +124,12 @@ footer p{max-width:720px;line-height:1.7}.footer-link{font-weight:800;color:var(
   .footer-row{flex-direction:column}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn,.feature{transition:none}}
+#three-bg{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.58}
+body>*:not(#three-bg){position:relative;z-index:1}
+@media (max-width:650px){#three-bg{opacity:.32}}
 </style>
 </head>
-<body>
+<body><canvas id="three-bg" aria-hidden="true"></canvas>
 <div class="blob one"></div><div class="blob two"></div>
 <nav>
   <a class="logo" href="#top" aria-label="Uzzap home"><span class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 6v8a7 7 0 0 0 14 0V6"/><path d="M8 4v4M16 4v4"/></svg></span>UZZAP</a>
@@ -228,5 +231,43 @@ footer p{max-width:720px;line-height:1.7}.footer-link{font-weight:800;color:var(
     <p>This site is a preview/download landing page. The UzzapAndroid repository remains the source of truth for Android builds. <a class="footer-link" href="https://github.com/cyanideph/UzzapAndroid/releases">View releases</a></p>
   </div>
 </footer>
-</body>
+<script type="module">
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js';
+const canvas=document.getElementById('three-bg');
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(48,innerWidth/innerHeight,.1,100);
+camera.position.z=8;
+const renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));
+renderer.setSize(innerWidth,innerHeight);
+const group=new THREE.Group(); scene.add(group);
+const geo=new THREE.IcosahedronGeometry(1,2);
+const mats=[
+ new THREE.MeshPhysicalMaterial({color:0x8ee6ad,roughness:.72,transparent:true,opacity:.22}),
+ new THREE.MeshPhysicalMaterial({color:0xd9f6a6,roughness:.78,transparent:true,opacity:.18}),
+ new THREE.MeshPhysicalMaterial({color:0xded8ff,roughness:.8,transparent:true,opacity:.2})
+];
+[-1.9,0,1.9].forEach((x,i)=>{
+ const mesh=new THREE.Mesh(geo,mats[i]);
+ mesh.position.set(x,(i-1)*1.8,-1-i*.7);
+ mesh.scale.setScalar(1.35+i*.25);
+ group.add(mesh);
+});
+scene.add(new THREE.AmbientLight(0xffffff,2.2));
+const light=new THREE.DirectionalLight(0xffffff,3);
+light.position.set(3,5,6); scene.add(light);
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+let t=0;
+function animate(){
+ requestAnimationFrame(animate);
+ if(!reduce){t+=.004;group.rotation.y=t*.45;group.rotation.x=Math.sin(t*.7)*.08;
+  group.children.forEach((m,i)=>m.position.y+=(Math.sin(t*1.2+i)-m.position.y)*.0025);}
+ renderer.render(scene,camera);
+}
+animate();
+addEventListener('resize',()=>{
+ camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();
+ renderer.setSize(innerWidth,innerHeight);renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));
+});
+</script></body>
 </html>
