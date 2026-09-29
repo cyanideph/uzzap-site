@@ -2,79 +2,175 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>UZZAP — The Philippine Chatroom, Reimagined</title>
-<meta name="description" content="UZZAP — a cinematic interactive showcase of the Philippine chatroom experience, powered by original UZZAP Android assets and UzzapBot.">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#050706">
+<title>UZZAP — The Philippine Chatroom</title>
+<meta name="description" content="UZZAP — an immersive interactive showcase of Philippine chatroom culture, original Android interface assets, games and UzzapBot.">
 <style>
-:root{--bg:#f7f8f5;--ink:#0a100d;--muted:#68726d;--line:#dfe4df;--green:#0a7a3b;--lime:#b7ff48;--dark:#07100b;--card:#fff;--shadow:0 30px 80px rgba(10,30,18,.12)}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;overflow-x:hidden}a{color:inherit;text-decoration:none}.shell{max-width:1240px;margin:auto;padding:0 28px}.nav{height:76px;display:flex;align-items:center;justify-content:space-between;position:relative;z-index:20}.brand{font-weight:900;letter-spacing:-.07em;font-size:24px}.brand b{color:var(--green)}.navlinks{display:flex;gap:28px;font-size:13px;color:#59625d}.navlinks a:hover{color:var(--green)}.navcta{border:1px solid #cdd6cf;border-radius:999px;padding:11px 17px;font-size:12px;font-weight:700;background:#fff}.hero{min-height:calc(100vh - 76px);display:grid;grid-template-columns:1fr 1fr;align-items:center;position:relative;isolation:isolate;padding:50px 0 100px}.hero:before{content:"";position:absolute;width:700px;height:700px;right:-260px;top:-130px;background:radial-gradient(circle,rgba(142,255,77,.3),transparent 65%);z-index:-2}.eyebrow{display:inline-flex;align-items:center;gap:9px;padding:7px 11px;border:1px solid #d8e1da;border-radius:999px;background:#fff;font-size:11px;font-weight:800;color:#4d5a52}.dot{width:7px;height:7px;background:#35c96b;border-radius:50%;box-shadow:0 0 0 5px #dff8e7}.hero h1{font-size:clamp(58px,8vw,116px);line-height:.88;letter-spacing:-.09em;margin:24px 0}.hero h1 span{color:var(--green)}.hero p{font-size:18px;line-height:1.65;color:var(--muted);max-width:560px}.actions{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}.btn{padding:14px 20px;border-radius:12px;font-size:13px;font-weight:800;border:1px solid #d7dfd9;background:#fff}.btn.primary{background:var(--ink);color:#fff;border-color:var(--ink);box-shadow:0 12px 30px rgba(0,0,0,.15)}.micro{display:flex;gap:22px;margin-top:34px;color:#7a837e;font-size:11px}.hero-stage{height:650px;position:relative}.orb{position:absolute;inset:60px 30px;background:radial-gradient(circle at 40% 35%,rgba(184,255,72,.45),transparent 20%),linear-gradient(145deg,#efffe7,#d9f1dc);border-radius:42% 58% 55% 45%;filter:blur(.2px);transform:rotate(-8deg);box-shadow:inset 0 0 80px rgba(255,255,255,.8),0 40px 100px rgba(14,89,42,.12)}#hero3d{position:absolute;inset:0;width:100%;height:100%}.phone{position:absolute;width:255px;height:520px;left:50%;top:50%;transform:translate(-50%,-50%) rotate(7deg);border:9px solid #101612;border-radius:38px;background:#121a14;box-shadow:35px 45px 90px rgba(0,0,0,.22);padding:9px;z-index:4}.screen{height:100%;border-radius:27px;overflow:hidden;background:#f0f4ed}.screenbar{height:48px;background:#0e5c2e;color:#fff;padding:13px;font-size:11px;font-weight:800}.room{padding:12px;font-size:10px}.roomline{padding:10px 8px;border-bottom:1px solid #d9dfd9}.roomline b{color:#16803f}.floatcard{position:absolute;z-index:6;background:#fff;border:1px solid #e0e7e1;border-radius:16px;padding:15px 17px;box-shadow:var(--shadow);font-size:11px}.fc1{top:115px;left:10px}.fc2{right:0;bottom:150px}.fc3{left:45px;bottom:70px}.marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:17px 0;overflow:hidden;white-space:nowrap;color:#647069;font-size:11px;font-weight:800;letter-spacing:.12em}.marquee span{display:inline-block;animation:marquee 28s linear infinite}@keyframes marquee{to{transform:translateX(-50%)}}section{padding:130px 0}.sectionhead{max-width:760px}.kicker{font-size:11px;color:var(--green);font-weight:900;letter-spacing:.14em;text-transform:uppercase}.sectionhead h2{font-size:clamp(44px,6vw,82px);line-height:.94;letter-spacing:-.075em;margin:15px 0}.sectionhead p{font-size:17px;color:var(--muted);line-height:1.7}.featuregrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:60px}.feature{min-height:370px;border:1px solid var(--line);background:var(--card);border-radius:26px;padding:26px;position:relative;overflow:hidden;box-shadow:0 20px 60px rgba(12,35,20,.05)}.feature h3{font-size:25px;letter-spacing:-.05em;margin:25px 0 10px}.feature p{color:var(--muted);line-height:1.6;font-size:13px}.feature .num{font-size:11px;color:#839087}.visual{height:145px;border-radius:18px;background:#eff5ef;overflow:hidden;position:relative}.visual img{width:100%;height:100%;object-fit:cover}.chatdots{position:absolute;inset:22px;display:flex;align-items:center;gap:9px}.chatdots i{width:42px;height:42px;border-radius:50%;background:#fff;border:1px solid #d8e2da}.darksection{background:var(--dark);color:#f2f8f0;position:relative;overflow:hidden}.darksection .sectionhead p{color:#a3b1a7}.botstage{height:700px;margin-top:65px;border:1px solid #26372c;border-radius:30px;position:relative;overflow:hidden;background:radial-gradient(circle at 70% 35%,rgba(169,255,66,.12),transparent 35%),#09120d}.botstage canvas{position:absolute;inset:0;width:100%;height:100%}.botcopy{position:absolute;left:50px;top:55px;z-index:3;max-width:500px}.botcopy h3{font-size:clamp(58px,8vw,110px);letter-spacing:-.1em;line-height:.8;margin:18px 0}.botcopy h3 span{color:var(--lime)}.terminal{margin-top:30px;border:1px solid #304337;background:rgba(4,10,7,.72);border-radius:14px;padding:17px;font:11px/2 monospace;color:#9fb1a4;backdrop-filter:blur(12px)}.terminal b{color:var(--lime)}.assetwall{display:grid;grid-template-columns:1.2fr .8fr .8fr;grid-auto-rows:190px;gap:14px;margin-top:60px}.assetcard{background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden;position:relative;padding:20px}.assetcard.big{grid-row:span 2}.assetcard img{width:100%;height:100%;object-fit:contain}.assetcard.big img{object-fit:cover}.assetlabel{position:absolute;left:18px;bottom:15px;background:rgba(255,255,255,.88);backdrop-filter:blur(8px);padding:6px 9px;border-radius:7px;font-size:9px;font-weight:800}.cta{background:#dfffc3;border:1px solid #c3eba4;border-radius:32px;padding:75px;display:flex;align-items:center;justify-content:space-between;gap:30px;margin-top:80px}.cta h2{font-size:clamp(42px,6vw,75px);line-height:.9;letter-spacing:-.08em;margin:0}.footer{padding:35px 0 50px;border-top:1px solid var(--line);font-size:11px;color:#768079;display:flex;justify-content:space-between}.reveal{opacity:0;transform:translateY(35px)}.cursor{position:fixed;width:18px;height:18px;border:1px solid var(--green);border-radius:50%;pointer-events:none;z-index:100;mix-blend-mode:multiply;transition:transform .12s ease;transform:translate(-50%,-50%)}@media(max-width:800px){.shell{padding:0 18px}.navlinks{display:none}.hero{grid-template-columns:1fr;padding-top:35px}.hero-stage{height:520px}.phone{width:215px;height:440px}.featuregrid{grid-template-columns:1fr}.assetwall{grid-template-columns:1fr 1fr;grid-auto-rows:160px}.assetcard.big{grid-row:span 1;grid-column:span 2}.botstage{height:600px}.botcopy{left:25px;top:35px}.cta{padding:45px 28px;display:block}.cta .btn{display:inline-block;margin-top:25px}.micro{flex-wrap:wrap}.footer{display:block}.footer span{display:block;margin-top:8px}}@media(max-width:480px){.hero-stage{height:440px}.floatcard{transform:scale(.85)}.fc1{left:-10px}.fc2{right:-15px}.fc3{left:0}.assetwall{grid-template-columns:1fr}.assetcard.big{grid-column:span 1}.botstage{height:560px}.botcopy h3{font-size:60px}.cursor{display:none}}
+:root{
+ --bg:#050706;--bg2:#090d0a;--ink:#f4f8f3;--muted:#8d9990;--line:rgba(255,255,255,.11);
+ --green:#7dff3f;--green2:#16b957;--glass:rgba(12,18,14,.58);--max:1440px;
+}
+*{box-sizing:border-box}html{background:var(--bg);color:var(--ink);scroll-behavior:auto}
+body{margin:0;background:var(--bg);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opacity:.055;background-image:url("https://raw.githubusercontent.com/cyanideph/UzzapAndroid/main/app/src/main/res/drawable/u_background_pattern.png");background-size:420px;mix-blend-mode:screen}
+a{color:inherit;text-decoration:none}button{font:inherit}.wrap{width:min(var(--max),calc(100% - 48px));margin:auto}
+#webgl{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.vignette{position:fixed;inset:0;z-index:1;pointer-events:none;background:radial-gradient(circle at 50% 40%,transparent 20%,rgba(0,0,0,.2) 70%,rgba(0,0,0,.72))}
+.noise{position:fixed;inset:-50%;z-index:91;pointer-events:none;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");animation:noise .18s steps(2) infinite}
+@keyframes noise{0%{transform:translate(0,0)}25%{transform:translate(2%,-1%)}50%{transform:translate(-1%,2%)}75%{transform:translate(1%,1%)}100%{transform:translate(-2%,-1%)}}
+nav{position:fixed;top:0;left:0;right:0;z-index:30;height:86px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;mix-blend-mode:normal}
+.logo{font-weight:950;letter-spacing:-.08em;font-size:25px}.logo span{color:var(--green)}
+.navlinks{display:flex;gap:26px;font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:#aab4ad}.navlinks a{transition:.3s}.navlinks a:hover{color:var(--green)}
+.navpill{border:1px solid var(--line);background:rgba(5,7,6,.5);backdrop-filter:blur(16px);padding:11px 15px;border-radius:999px;font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+.progress{position:fixed;left:0;top:0;height:2px;background:var(--green);width:0;z-index:100;box-shadow:0 0 20px var(--green)}
+.hero{min-height:100svh;position:relative;z-index:3;display:flex;align-items:flex-end;padding:0 0 11vh}
+.hero-copy{max-width:1050px}
+.overline{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--green);font-weight:900;margin-bottom:25px}
+.hero h1{font-size:clamp(78px,15vw,225px);line-height:.78;letter-spacing:-.105em;margin:0;max-width:1100px;font-weight:950}
+.hero h1 em{font-style:normal;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.5)}
+.hero-sub{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;margin-top:45px}
+.hero-sub p{max-width:520px;font-size:15px;line-height:1.65;color:#a8b2aa;margin:0}
+.scrollhint{display:flex;align-items:center;gap:12px;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:#9ba59e;white-space:nowrap}.scrollhint i{display:block;width:44px;height:1px;background:var(--green)}
+.section{position:relative;z-index:4;min-height:100svh;padding:18vh 0;display:flex;align-items:center}
+.section.dark{background:linear-gradient(180deg,transparent,rgba(0,0,0,.38),transparent)}
+.grid{display:grid;grid-template-columns:1fr 1.4fr;gap:8vw;align-items:center}
+.index{font-size:10px;letter-spacing:.2em;color:var(--green);font-weight:900}.title{font-size:clamp(52px,8vw,120px);line-height:.84;letter-spacing:-.09em;margin:16px 0 26px;font-weight:900}.title small{display:block;color:#6e7971;font-size:.23em;letter-spacing:.12em;line-height:1.2;text-transform:uppercase;margin-top:24px}.body{max-width:500px;color:#929d95;line-height:1.75;font-size:15px}
+.visual{height:600px;position:relative;perspective:1400px}
+.panel{position:absolute;left:12%;top:10%;width:76%;height:80%;border:1px solid rgba(255,255,255,.16);border-radius:30px;background:linear-gradient(145deg,rgba(255,255,255,.09),rgba(255,255,255,.025));backdrop-filter:blur(22px);box-shadow:0 60px 120px rgba(0,0,0,.45);overflow:hidden;transform:rotateY(-14deg) rotateX(6deg);transition:transform .8s cubic-bezier(.16,1,.3,1)}
+.visual:hover .panel{transform:rotateY(-4deg) rotateX(2deg) translateZ(20px)}
+.panel:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 70% 20%,rgba(125,255,63,.16),transparent 35%)}
+.chrome{height:54px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:7px;padding:0 18px}.chrome i{width:7px;height:7px;border-radius:50%;background:#6b746e}.chrome span{margin-left:auto;font:9px monospace;color:#667069}
+.asset{position:absolute;inset:54px 20px 20px;display:flex;align-items:center;justify-content:center}.asset img{max-width:100%;max-height:100%;object-fit:contain;filter:drop-shadow(0 30px 45px rgba(0,0,0,.35))}
+.room-ui{position:absolute;inset:80px 45px 35px;display:grid;grid-template-columns:34% 1fr;border:1px solid rgba(255,255,255,.1);border-radius:15px;overflow:hidden;background:#0b100d}.rooms{border-right:1px solid var(--line);padding:16px}.rooms b{display:block;font-size:11px;margin-bottom:16px}.rooms div{font-size:9px;color:#778178;padding:11px 8px;border-radius:8px}.rooms div:first-of-type{background:rgba(125,255,63,.1);color:#c9e8c0}.messages{padding:18px}.messages strong{font-size:11px}.bubble{max-width:75%;padding:9px 11px;border:1px solid var(--line);border-radius:11px;margin-top:12px;font-size:9px;color:#9ba59d}.bubble.me{margin-left:auto;background:rgba(125,255,63,.08);color:#d4ebce}
+.asset-strip{display:flex;gap:10px;margin-top:34px}.asset-chip{height:65px;min-width:95px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.035);padding:8px;display:flex;align-items:center;justify-content:center}.asset-chip img{max-width:100%;max-height:100%;object-fit:contain}
+.full-bleed{min-height:120svh;position:relative;z-index:4;display:flex;align-items:center;overflow:hidden}.full-bleed .wrap{width:min(1100px,calc(100% - 48px))}
+.center{text-align:center;margin:auto}.center .body{margin:auto}.huge{font-size:clamp(70px,16vw,230px);line-height:.75;letter-spacing:-.11em;font-weight:950;margin:25px 0}.huge span{color:var(--green)}
+.bot-shell{position:relative;min-height:100svh;display:flex;align-items:center}.bot-card{width:100%;min-height:680px;border:1px solid rgba(125,255,63,.2);border-radius:38px;background:radial-gradient(circle at 75% 35%,rgba(125,255,63,.12),transparent 30%),rgba(5,10,7,.65);backdrop-filter:blur(18px);overflow:hidden;position:relative}.bot-card canvas{position:absolute;inset:0;width:100%;height:100%}.bot-copy{position:absolute;z-index:2;left:7%;top:10%;max-width:650px}.bot-copy .title{font-size:clamp(64px,10vw,150px)}.terminal{border:1px solid rgba(125,255,63,.16);background:rgba(0,0,0,.42);padding:18px 20px;border-radius:14px;color:#8fa28f;font:11px/2 monospace;max-width:430px}.terminal b{color:var(--green)}
+.cta{min-height:80svh;display:flex;align-items:center;position:relative;z-index:4}.cta-inner{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:10vh 0;width:100%;display:flex;align-items:end;justify-content:space-between;gap:30px}.cta h2{font-size:clamp(55px,10vw,145px);line-height:.8;letter-spacing:-.1em;margin:0;font-weight:950}.enter{display:inline-flex;align-items:center;gap:14px;border:1px solid rgba(125,255,63,.35);padding:16px 20px;border-radius:999px;color:var(--green);font-size:10px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;background:rgba(125,255,63,.04);transition:.3s}.enter:hover{background:var(--green);color:#061006;transform:translateY(-3px)}
+footer{position:relative;z-index:4;padding:30px 0 50px;color:#68736b;font-size:10px;letter-spacing:.08em;display:flex;justify-content:space-between;border-top:1px solid var(--line)}
+@media(max-width:850px){.wrap{width:min(var(--max),calc(100% - 34px))}.navlinks{display:none}nav{height:70px;padding:0 17px}.hero{padding-bottom:9vh}.hero-sub{display:block}.scrollhint{margin-top:25px}.grid{grid-template-columns:1fr;gap:50px}.visual{height:470px}.panel{left:2%;width:96%;transform:none}.visual:hover .panel{transform:translateY(-5px)}.section{padding:14vh 0}.bot-card{min-height:620px}.cta-inner{display:block}.enter{margin-top:35px}footer{display:block}footer span{display:block;margin-top:12px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
-<div class="cursor" id="cursor"></div>
-<header class="shell nav"><a class="brand" href="#">U<span>ZZAP</span></a><nav class="navlinks"><a href="#experience">Experience</a><a href="#interface">Interface</a><a href="#bot">UzzapBot</a><a href="#sources">Sources</a></nav><a class="navcta" href="#experience">Explore UZZAP ↗</a></header>
+<div class="progress" id="progress"></div><canvas id="webgl"></canvas><div class="vignette"></div><div class="noise"></div>
+<nav><a class="logo" href="#">U<span>ZZAP</span></a><div class="navlinks"><a href="#rooms">Rooms</a><a href="#chat">Chat</a><a href="#games">Games</a><a href="#bot">UzzapBot</a></div><a class="navpill" href="#enter">Enter experience ↗</a></nav>
 
 <main>
-<section class="shell hero">
-<div>
-<div class="eyebrow"><i class="dot"></i> THE PHILIPPINE CHATROOM EXPERIENCE</div>
-<h1>Where rooms<br>feel <span>alive.</span></h1>
-<p>UZZAP is a showcase of chatroom culture, familiar interfaces, buddies, games and conversation — rebuilt around the identity of the original experience.</p>
-<div class="actions"><a class="btn primary" href="#experience">Explore the experience →</a><a class="btn" href="#interface">View original UI</a></div>
-<div class="micro"><span>● ROOMS</span><span>● BUDDIES</span><span>● PRIVATE CHAT</span><span>● GAMES</span></div>
-</div>
-<div class="hero-stage">
-<div class="orb"></div><canvas id="hero3d"></canvas>
-<div class="phone"><div class="screen"><div class="screenbar">UZZAP · CHATROOM</div><div class="room"><div class="roomline"><b>Southern Leyte</b><br>12 people online</div><div class="roomline"><b>ALRICH</b> · kumusta mga bai?</div><div class="roomline"><b>MARITES</b> · may chismis ko 😭</div><div class="roomline"><b>CY</b> · tara tambay</div><div class="roomline"><b>UZZAPBOT</b> · game ta?</div><div class="roomline"><b>TRIVIA</b> · ready...</div></div></div></div>
-<div class="floatcard fc1">🟢 <b>Room active</b><br><span style="color:#7b857f">Conversation is happening</span></div>
-<div class="floatcard fc2">⚡ <b>Instant messaging</b><br><span style="color:#7b857f">Private + room chat</span></div>
-<div class="floatcard fc3">🎮 <b>Games inside the room</b></div>
+<section class="hero wrap" id="top">
+<div class="hero-copy">
+<div class="overline">A PHILIPPINE CHATROOM EXPERIENCE · 2026</div>
+<h1>UZZAP<br><em>IS ALIVE.</em></h1>
+<div class="hero-sub"><p>A cinematic exploration of rooms, people, private conversation, games and AI — rebuilt around the real visual language of UZZAP.</p><div class="scrollhint"><i></i> Scroll to enter</div></div>
 </div>
 </section>
 
-<div class="marquee"><span>UZZAP · CHATROOMS · BUDDIES · PRIVATE MESSAGES · EMOTICONS · WORDHUNT · TRIVIA · GTA · UZZAPBOT · PHILIPPINES · UZZAP · CHATROOMS · BUDDIES · PRIVATE MESSAGES · EMOTICONS · WORDHUNT · TRIVIA · GTA · UZZAPBOT · PHILIPPINES · </span></div>
+<section class="section dark" id="rooms">
+<div class="wrap grid">
+<div><div class="index">01 / ROOMS</div><h2 class="title">ENTER<br>THE ROOM.<small>Not a feed. A place.</small></h2><p class="body">UZZAP begins where people gather. Province-based rooms, presence and live conversation create a sense of place instead of an infinite timeline.</p></div>
+<div class="visual"><div class="panel"><div class="chrome"><i></i><i></i><i></i><span>UZZAP / ROOMS</span></div><div class="room-ui"><div class="rooms"><b>ROOMS</b><div>● Southern Leyte</div><div>● Davao</div><div>● Cebu</div><div>● Manila</div><div>● Philippines</div></div><div class="messages"><strong>Southern Leyte</strong><div class="bubble">12 people online</div><div class="bubble">Room conversation is active.</div><div class="bubble me">tara tambay 👋</div></div></div></div></div>
+</div></div>
+</section>
 
-<section id="experience"><div class="shell">
-<div class="sectionhead reveal"><div class="kicker">01 / THE EXPERIENCE</div><h2>Not another social feed.</h2><p>UZZAP is about entering a room and finding people already there. The interface is the doorway; the conversation is the product.</p></div>
-<div class="featuregrid">
-<article class="feature reveal"><div class="visual"><div class="chatdots"><i></i><i></i><i></i><i></i></div></div><span class="num">01 — ROOMS</span><h3>Find your room.</h3><p>Province-based discovery, active chatrooms and a sense of place instead of an endless feed.</p></article>
-<article class="feature reveal"><div class="visual"><img src="https://raw.githubusercontent.com/cyanideph/UzzapAndroid/main/app/src/main/res/drawable/d_buddylist_icon.png" alt=""></div><span class="num">02 — BUDDIES</span><h3>Know who's around.</h3><p>Buddy lists, status, presence and the small signals that make a room feel populated.</p></article>
-<article class="feature reveal"><div class="visual"><img src="https://raw.githubusercontent.com/cyanideph/UzzapAndroid/main/app/src/main/res/drawable/u_menu_bottombar.png" alt=""></div><span class="num">03 — PLAY</span><h3>Conversation + games.</h3><p>Trivia, word games and room activities become part of the social experience.</p></article>
-</div></div></section>
+<section class="section" id="chat">
+<div class="wrap grid">
+<div class="visual"><div class="panel"><div class="chrome"><i></i><i></i><i></i><span>ORIGINAL ANDROID MATERIAL</span></div><div class="asset"><img src="https://raw.githubusercontent.com/cyanideph/UzzapAndroid/main/app/src/main/res/drawable/u_titlebar_middle.png" alt="Original UZZAP title bar"></div></div></div>
+<div><div class="index">02 / CHAT</div><h2 class="title">THE DETAILS<br>MATTER.<small>Original assets. New stage.</small></h2><p class="body">The Android project contains the visual DNA. We preserve the original surfaces, bars and icons, then turn them into cinematic objects instead of flattening them into a screenshot gallery.</p><div class="asset-strip"><div class="asset-chip"><img src="https://raw.githubusercontent.com/cyanideph/UzzapAndroid/main/app/src/main/res/drawable/u_functionbar_middle.png" alt=""></div><div class="asset-chip"><img src="https://raw.githubusercontent.com/cyanideph/UzzapAndroid/main/app/src/main/res/drawable/u_menu_bottombar.png" alt=""></div><div class="asset-chip"><img src="https://raw.githubusercontent.com/cyanideph/UzzapAndroid/main/app/src/main/res/drawable/d_buddylist_icon.png" alt=""></div><div class="asset-chip"><img src="https://raw.githubusercontent.com/cyanideph/UzzapAndroid/main/app/src/main/res/drawable/d_unread_icon.png" alt=""></div></div></div>
+</div>
+</section>
 
-<section id="interface"><div class="shell">
-<div class="sectionhead reveal"><div class="kicker">02 / ORIGINAL INTERFACE</div><h2>The details are the identity.</h2><p>Original UzzapAndroid resources become visual material for a modern showcase — preserved, enlarged and animated instead of buried in a repository.</p></div>
-<div class="assetwall">
-<div class="assetcard big reveal"><img src="https://raw.githubusercontent.com/cyanideph/UzzapAndroid/main/app/src/main/res/drawable/u_background_pattern.png" alt="UZZAP background pattern"><span class="assetlabel">BACKGROUND PATTERN</span></div>
-<div class="assetcard reveal"><img src="https://raw.githubusercontent.com/cyanideph/UzzapAndroid/main/app/src/main/res/drawable/u_titlebar_middle.png" alt="UZZAP title bar"><span class="assetlabel">TITLEBAR</span></div>
-<div class="assetcard reveal"><img src="https://raw.githubusercontent.com/cyanideph/UzzapAndroid/main/app/src/main/res/drawable/u_functionbar_middle.png" alt="UZZAP function bar"><span class="assetlabel">FUNCTION BAR</span></div>
-<div class="assetcard reveal"><img src="https://raw.githubusercontent.com/cyanideph/UzzapAndroid/main/app/src/main/res/drawable/d_unread_icon.png" alt="Unread icon"><span class="assetlabel">UNREAD</span></div>
-<div class="assetcard reveal"><img src="https://raw.githubusercontent.com/cyanideph/UzzapAndroid/main/app/src/main/res/drawable/d_titlebar_middle.png" alt="Dark title bar"><span class="assetlabel">DARK TITLEBAR</span></div>
-</div></div></section>
+<section class="full-bleed" id="games">
+<div class="wrap center"><div class="index">03 / GAMES</div><div class="huge">PLAY<br><span>TOGETHER.</span></div><p class="body">Trivia. WordHunt. GTA. Room activities. The social layer doesn't stop at messaging — it becomes something people can do together.</p></div>
+</section>
 
-<section id="bot" class="darksection"><div class="shell">
-<div class="sectionhead reveal"><div class="kicker">03 / UZZAPBOT</div><h2>AI that belongs in the room.</h2><p>AI-powered chat &amp; conversation presented as part of the UZZAP ecosystem — casual, conversational and built around the room.</p></div>
-<div class="botstage reveal"><canvas id="bot3d"></canvas><div class="botcopy"><div class="kicker">LIVE ROOM CORE</div><h3>UZZAP<span>BOT</span></h3><div class="terminal"><b>UZ&gt;</b> room event received<br><b>UZ&gt;</b> conversation active<br><b>UZ&gt;</b> game surface available<br><b>UZ&gt;</b> memory connected<br><b>UZ&gt;</b> community first</div></div></div>
-</div></section>
+<section class="bot-shell" id="bot">
+<div class="wrap"><div class="bot-card"><canvas id="bot3d"></canvas><div class="bot-copy"><div class="index">04 / UZZAPBOT</div><h2 class="title">AI THAT<br><span style="color:var(--green)">BELONGS.</span></h2><p class="body">AI-powered chat &amp; conversation built to hang out inside the room — casual, conversational and community-first.</p><div class="terminal"><b>UZ&gt;</b> room event received<br><b>UZ&gt;</b> conversation active<br><b>UZ&gt;</b> game surface available<br><b>UZ&gt;</b> memory connected<br><b>UZ&gt;</b> community first</div></div></div></div>
+</section>
 
-<section id="sources"><div class="shell">
-<div class="sectionhead reveal"><div class="kicker">04 / SOURCE MATERIAL</div><h2>Built from the real UZZAP work.</h2><p>The showcase connects the visual identity to the Android and bot projects behind it.</p></div>
-<div class="cta reveal"><h2>Enter the<br>UZZAP world.</h2><a class="btn primary" href="https://github.com/cyanideph/UzzapAndroid">Explore UzzapAndroid ↗</a></div>
-</div></section>
+<section class="cta" id="enter">
+<div class="wrap"><div class="cta-inner"><h2>WELCOME<br>TO UZZAP.</h2><a class="enter" href="https://github.com/cyanideph/UzzapAndroid">Explore the source ↗</a></div></div>
+</section>
 </main>
 
-<footer class="shell footer"><b>UZZAP</b><span>Philippine chatroom culture · Android roots · UzzapBot</span><span>© 2026 UZZAP</span></footer>
+<footer class="wrap"><b>UZZAP</b><span>Philippine chatroom culture · Android roots · UzzapBot</span><span>© 2026</span></footer>
 
-<script src="https://cdn.jsdelivr.net/npm/three@0.179.1/build/three.min.js"></script>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js","three/webgpu":"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.webgpu.js","three/tsl":"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.tsl.js"}}</script>
 <script type="module">
-import {animate,inView,scroll} from "https://cdn.jsdelivr.net/npm/motion@12.23.24/+esm";
-document.querySelectorAll(".reveal").forEach((el,i)=>inView(el,()=>animate(el,{opacity:[0,1],y:[45,0]},{duration:.8,delay:(i%3)*.08,ease:[.22,1,.36,1]}),{amount:.2}));
-animate(".hero h1",{opacity:[0,1],y:[35,0]},{duration:1,ease:[.16,1,.3,1],delay:.12});
-animate(".hero p",{opacity:[0,1],y:[20,0]},{duration:.8,delay:.28});
-animate(".phone",{y:[35,-20],rotate:[7,3],scale:[.96,1]},{duration:1.2,ease:[.16,1,.3,1],delay:.15});
-const cursor=document.getElementById("cursor");addEventListener("pointermove",e=>{cursor.style.left=e.clientX+"px";cursor.style.top=e.clientY+"px"});
-function scene(canvas,kind){const renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true});renderer.setPixelRatio(Math.min(devicePixelRatio,1.7));const parent=canvas.parentElement;const scene=new THREE.Scene();const camera=new THREE.PerspectiveCamera(42,parent.clientWidth/parent.clientHeight,.1,100);camera.position.z=7;const group=new THREE.Group();scene.add(group);const count=kind==="hero"?900:1100;const geo=new THREE.BufferGeometry(),pos=new Float32Array(count*3);for(let i=0;i<count;i++){const r=kind==="hero"?3.6:5;pos[i*3]=(Math.random()-.5)*r*2;pos[i*3+1]=(Math.random()-.5)*r;pos[i*3+2]=(Math.random()-.5)*r}geo.setAttribute("position",new THREE.BufferAttribute(pos,3));const mat=new THREE.PointsMaterial({color:kind==="hero"?0x0a7a3b:0xb7ff48,size:kind==="hero"?.018:.025,transparent:true,opacity:kind==="hero"?.35:.5});group.add(new THREE.Points(geo,mat));const torus=new THREE.Mesh(new THREE.TorusKnotGeometry(kind==="hero"?1.55:2.0,.035,110,12),new THREE.MeshBasicMaterial({color:kind==="hero"?0x0a7a3b:0xb7ff48,wireframe:true,transparent:true,opacity:.24}));group.add(torus);function resize(){renderer.setSize(parent.clientWidth,parent.clientHeight,false);camera.aspect=parent.clientWidth/parent.clientHeight;camera.updateProjectionMatrix()}resize();addEventListener("resize",resize);scroll(v=>{group.rotation.y=v.progress*(kind==="hero"?1.2:.8);torus.rotation.x=v.progress*2});function loop(t){group.rotation.y+=.0008;group.rotation.x=Math.sin(t*.00025)*.08;torus.rotation.z+=.002;renderer.render(scene,camera);requestAnimationFrame(loop)}requestAnimationFrame(loop)}
-scene(document.getElementById("hero3d"),"hero");scene(document.getElementById("bot3d"),"bot");
+import * as THREE from "three";
+import {animate, inView, scroll} from "https://cdn.jsdelivr.net/npm/motion@12.23.24/+esm";
+import Lenis from "https://cdn.jsdelivr.net/npm/lenis@1.3.11/+esm";
+import {WebGPURenderer} from "three/webgpu";
+
+const reduced=matchMedia("(prefers-reduced-motion: reduce)").matches;
+const lenis=new Lenis({duration:1.15,smoothWheel:true,syncTouch:false});
+function raf(t){lenis.raf(t);requestAnimationFrame(raf)} requestAnimationFrame(raf);
+const progress=document.getElementById("progress");
+lenis.on("scroll",e=>progress.style.width=(e.progress*100)+"%");
+
+document.querySelectorAll(".hero-copy,.title,.body,.huge,.index,.bot-card").forEach((el,i)=>{
+ inView(el,()=>animate(el,{opacity:[0,1],y:[32,0]},{duration:.9,delay:Math.min(i*.035,.25),ease:[.16,1,.3,1]}),{amount:.15});
+});
+
+const canvas=document.getElementById("webgl");
+let renderer,scene,camera,root;
+async function initRenderer(){
+ try{
+  renderer=new WebGPURenderer({canvas,alpha:true,antialias:true,powerPreference:"high-performance"});
+  await renderer.init();
+ }catch(e){
+  renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true,powerPreference:"high-performance"});
+ }
+ renderer.setPixelRatio(Math.min(devicePixelRatio,1.7));
+ renderer.setSize(innerWidth,innerHeight,false);
+}
+await initRenderer();
+scene=new THREE.Scene();
+camera=new THREE.PerspectiveCamera(42,innerWidth/innerHeight,.1,100);
+camera.position.set(0,0,9);
+root=new THREE.Group();scene.add(root);
+
+const nodeMat=new THREE.MeshBasicMaterial({color:0x7dff3f,transparent:true,opacity:.75});
+const darkMat=new THREE.MeshBasicMaterial({color:0x183b20,transparent:true,opacity:.45,wireframe:true});
+const nodes=[];
+for(let i=0;i<80;i++){
+ const a=i/80*Math.PI*2;
+ const r=2.3+Math.sin(i*2.7)*.55;
+ const m=new THREE.Mesh(new THREE.IcosahedronGeometry(.025+Math.random()*.035,1),nodeMat.clone());
+ m.position.set(Math.cos(a*3)*r,Math.sin(a*2)*1.9,(Math.sin(a*4)*1.6));
+ root.add(m);nodes.push(m);
+}
+const ring=new THREE.Mesh(new THREE.TorusGeometry(2.6,.012,12,180),darkMat);ring.rotation.x=Math.PI/2;root.add(ring);
+const ring2=new THREE.Mesh(new THREE.TorusGeometry(3.5,.008,10,180),nodeMat.clone());ring2.material.opacity=.16;ring2.rotation.x=.9;root.add(ring2);
+
+const lineMat=new THREE.LineBasicMaterial({color:0x7dff3f,transparent:true,opacity:.075});
+for(let i=0;i<24;i++){
+ const a=Math.floor(Math.random()*nodes.length),b=Math.floor(Math.random()*nodes.length);
+ const g=new THREE.BufferGeometry().setFromPoints([nodes[a].position,nodes[b].position]);
+ root.add(new THREE.Line(g,lineMat));
+}
+const pointer={x:0,y:0}; addEventListener("pointermove",e=>{pointer.x=e.clientX/innerWidth-.5;pointer.y=e.clientY/innerHeight-.5});
+let targetScroll=0;scroll(v=>targetScroll=v.y.progress);
+function tick(t){
+ const s=targetScroll;
+ root.rotation.y+=(pointer.x*.35+s*.65-root.rotation.y)*.035;
+ root.rotation.x+=(pointer.y*.18-root.rotation.x)*.025;
+ root.position.y+=(s*1.2-root.position.y)*.025;
+ ring.rotation.z+=.0008; ring2.rotation.z-=.00045;
+ nodes.forEach((n,i)=>{n.scale.setScalar(1+Math.sin(t*.0015+i)*.22);n.material.opacity=.3+Math.sin(t*.001+i)*.18});
+ camera.position.z+=(8.8+s*1.2-camera.position.z)*.02;
+ renderer.render(scene,camera);requestAnimationFrame(tick);
+} requestAnimationFrame(tick);
+
+const botCanvas=document.getElementById("bot3d");
+let br=new THREE.WebGLRenderer({canvas:botCanvas,alpha:true,antialias:true});br.setPixelRatio(Math.min(devicePixelRatio,1.5));
+const bs=new THREE.Scene(),bc=new THREE.PerspectiveCamera(45,1,.1,100);bc.position.z=7;
+const bg=new THREE.Group();bs.add(bg);
+const core=new THREE.Mesh(new THREE.IcosahedronGeometry(1.25,4),new THREE.MeshBasicMaterial({color:0x7dff3f,wireframe:true,transparent:true,opacity:.42}));bg.add(core);
+const core2=new THREE.Mesh(new THREE.IcosahedronGeometry(.78,3),new THREE.MeshBasicMaterial({color:0xbaff8b,transparent:true,opacity:.06}));bg.add(core2);
+for(let i=0;i<18;i++){const a=i/18*Math.PI*2;const q=new THREE.Mesh(new THREE.SphereGeometry(.025,8,8),new THREE.MeshBasicMaterial({color:0x7dff3f}));q.position.set(Math.cos(a)*2.4,Math.sin(a)*1.5,Math.sin(a*2)*1.2);bg.add(q)}
+function brender(t){core.rotation.x=t*.00025;core.rotation.y=t*.0004;core2.rotation.y=-t*.00025;bg.rotation.z=Math.sin(t*.0003)*.12;br.render(bs,bc);requestAnimationFrame(brender)} requestAnimationFrame(brender);
+function resize(){renderer.setSize(innerWidth,innerHeight,false);camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();const r=botCanvas.parentElement.getBoundingClientRect();br.setSize(r.width,r.height,false);bc.aspect=r.width/r.height;bc.updateProjectionMatrix()} addEventListener("resize",resize);resize();
 </script>
 </body>
 </html>
