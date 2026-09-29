@@ -228,7 +228,7 @@ function transitionRoom(name){
 }
 document.querySelectorAll("[data-room]").forEach(room=>room.addEventListener("click",()=>transitionRoom(room.dataset.room)));
 
-document.querySelectorAll("[data-room]").forEach(room=>room.addEventListener("click",()=>{document.querySelectorAll("[data-room]").forEach(x=>x.classList.remove("selected"));room.classList.add("selected");const name=room.dataset.room;document.getElementById("room-name").textContent=name;document.getElementById("room-count").textContent=roomData[name][0]+" people online";document.getElementById("room-msg").textContent=roomData[name][1];}));
+
 const botResponses={chat:"tara tambay. Unsay ganap sa room?",trivia:"TRIVIA ON · Ready. First question loading…",wordhunt:"EWORDHUNT · Find the hidden word before the room does.",language:"Bisaya · Waray · Tagalog · English · Taglish"};
 document.querySelectorAll("[data-bot]").forEach(btn=>btn.addEventListener("click",()=>{const out=document.getElementById("bot-response");out.textContent="UZ> "+botResponses[btn.dataset.bot];}));
 const gameStatus=document.getElementById("game-status"),gamePrompt=document.getElementById("game-prompt"),gameChoices=document.getElementById("game-choices"),gameResult=document.getElementById("game-result");
