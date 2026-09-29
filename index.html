@@ -3,84 +3,123 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>UZZAP — One community. Multiple worlds.</title>
+<title>UZZAP | Philippine Chat Rooms</title>
+<meta name="description" content="UZZAP — Philippine community rooms, buddies, private chat, realtime messaging and UzzapBot games.">
 <style>
-:root{--bg:#f6f7f8;--card:#fff;--ink:#17191c;--muted:#73777d;--line:#e5e7ea;--accent:#f0a400;--dark:#202326;--green:#16835a}
-*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 Arial,Helvetica,sans-serif}a{color:inherit;text-decoration:none}.wrap{max-width:1080px;margin:auto;padding:0 18px}
-.top{height:38px;border-bottom:1px solid var(--line);background:#fff;font-size:12px;color:var(--muted)}.top .wrap{height:100%;display:flex;align-items:center;justify-content:space-between}
-.brandbar{background:#fff;border-bottom:1px solid var(--line)}.brand{height:74px;display:flex;align-items:center;justify-content:space-between}.logo{font-weight:900;font-size:24px;letter-spacing:-1.5px}.logo span{color:var(--accent)}.tagline{font-size:12px;color:var(--muted);margin-top:1px}
-.actions{display:flex;gap:8px}.btn{border:1px solid #d8dadd;background:#fff;border-radius:7px;padding:8px 13px;font-weight:700;font-size:12px}.btn.primary{background:var(--dark);border-color:var(--dark);color:#fff}
-.nav{background:#fff;border-bottom:1px solid var(--line)}.nav .wrap{display:flex;gap:18px;height:44px;align-items:center;overflow:auto;white-space:nowrap}.nav a{font-size:12px;color:#555}.nav a.active{color:#111;font-weight:800}
-main{padding:28px 0 40px}.hero{background:var(--dark);color:#fff;border-radius:12px;padding:34px 32px;margin-bottom:20px}.hero h1{font-size:31px;line-height:1.08;margin:0 0 9px;letter-spacing:-1px}.hero p{max-width:620px;color:#c9cdd1;margin:0 0 20px}.hero .btn{background:#fff;border-color:#fff;color:#111;margin-right:6px}.hero .btn.alt{background:transparent;color:#fff;border-color:#666}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:16px 0 24px}.stat{background:#fff;border:1px solid var(--line);border-radius:9px;padding:14px}.stat b{display:block;font-size:19px}.stat span{font-size:11px;color:var(--muted)}
-.section{margin-top:24px}.sectionhead{display:flex;align-items:end;justify-content:space-between;margin-bottom:10px}.sectionhead h2{font-size:18px;margin:0}.sectionhead a{font-size:11px;color:#777}
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.card{background:var(--card);border:1px solid var(--line);border-radius:9px;overflow:hidden}.thumb{height:100px;background:#eceeef;display:flex;align-items:center;justify-content:center;color:#999;font-size:11px}.cardbody{padding:13px}.card h3{font-size:14px;margin:0 0 5px}.muted{color:var(--muted);font-size:11px}.chips{margin-top:10px;display:flex;gap:5px;flex-wrap:wrap}.chip{font-size:9px;border:1px solid var(--line);border-radius:99px;padding:3px 6px;color:#666}.play{display:inline-block;margin-top:11px;font-size:11px;font-weight:800;color:#9b6900}
-.activity{background:#fff;border:1px solid var(--line);border-radius:9px}.activityrow{padding:11px 13px;border-bottom:1px solid var(--line);font-size:12px}.activityrow:last-child{border-bottom:0}.activityrow span{float:right;color:#999;font-size:10px}
-.columns{display:grid;grid-template-columns:2fr 1fr;gap:18px}.listbox{background:#fff;border:1px solid var(--line);border-radius:9px}.listrow{padding:11px 13px;border-bottom:1px solid var(--line)}.listrow:last-child{border:0}.listrow b{font-size:12px}.listrow small{display:block;color:var(--muted);font-size:10px;margin-top:2px}
-.footer{background:#fff;border-top:1px solid var(--line);padding:28px 0 34px;color:var(--muted);font-size:11px}.footergrid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:25px}.footer b{color:#222}.footer a{display:block;margin:4px 0}.copy{border-top:1px solid var(--line);margin-top:20px;padding-top:13px;font-size:10px}
-.page{display:none}.page.show{display:block}
-@media(max-width:720px){.wrap{padding:0 12px}.stats{grid-template-columns:repeat(2,1fr)}.grid3{grid-template-columns:1fr}.columns,.footergrid{grid-template-columns:1fr}.brand{height:auto;padding:14px 0;gap:12px;align-items:flex-start}.actions{display:none}.hero{padding:25px 20px}.hero h1{font-size:26px}}
+:root{--bg:#080909;--card:#151616;--card2:#1d1e1e;--border:#303232;--lime:#8EEF04;--lime2:#b3ff4d;--red:#AF0C0D;--blue:#0D0CAF;--text:#ededed;--muted:#999;--max:480px;--radius:14px}
+*{box-sizing:border-box}html{background:#050606;scroll-behavior:smooth}body{margin:0 auto;max-width:var(--max);min-height:100vh;padding-bottom:82px;background:var(--bg);color:var(--text);font:14px/1.5 "Segoe UI",Roboto,Arial,sans-serif;overflow-x:hidden}
+button,a{font:inherit}button{cursor:pointer}.topbar{height:58px;display:flex;align-items:center;padding:9px 14px;background:#101111;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:50;backdrop-filter:blur(14px)}
+.logo{font-weight:900;font-size:18px;letter-spacing:2px;background:#1b1c1c;border:1px solid var(--border);padding:8px 16px;border-radius:999px}.lime{color:var(--lime)}
+#webgl{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.42}.app{position:relative;z-index:1}
+.hero{margin:12px;border-radius:var(--radius);border:1px solid var(--border);background:radial-gradient(ellipse at 50% 0%,#193004 0%,#0c1305 50%,#0a0a0a 100%);padding:28px 18px;text-align:center;overflow:hidden}
+.hero h1{font-size:40px;font-weight:900;letter-spacing:2px;margin:0}.hero .tag{margin:8px 0;font-size:15px;font-weight:800}.hero p{color:var(--muted);font-size:13px;line-height:1.6;margin:0 auto 16px;max-width:410px}
+.cta{display:flex;gap:10px;justify-content:center;margin-bottom:14px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 17px;border-radius:10px;font-weight:800;font-size:13px;border:1px solid var(--border);color:var(--text);background:#242424}.btn-lime{background:linear-gradient(180deg,var(--lime2),var(--lime));color:#080908;border-color:transparent}.btn-full{display:flex;width:100%;justify-content:center;padding:13px;border-radius:10px;font-weight:800;color:#080908;border:0}.bg-lime{background:linear-gradient(180deg,var(--lime2),var(--lime))}.bg-red{background:linear-gradient(180deg,#d91a1b,var(--red));color:#fff}.bg-blue{background:linear-gradient(180deg,#2b2ae0,#3d3cf0);color:#fff}
+.pills{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}.pill{display:flex;align-items:center;gap:6px;background:#171818;border:1px solid var(--border);border-radius:999px;padding:6px 11px;font-size:11px;color:var(--muted)}.pill b{color:var(--lime)}
+.features{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);margin:12px;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border)}.feature{background:rgba(21,22,22,.94);padding:16px 12px;text-align:center}.feature .ic{font-size:22px;margin-bottom:6px}.feature h3{font-size:13px;margin:0 0 4px}.feature p{color:var(--muted);font-size:11px;line-height:1.5;margin:0}
+.section{margin:12px;border:1px solid var(--border);border-radius:var(--radius);background:rgba(21,22,22,.94);overflow:hidden}.sec-title{padding:14px 16px 4px;font-size:14px;font-weight:900;letter-spacing:1px;color:var(--lime)}.sec-sub{padding:0 16px 10px;font-size:10px;letter-spacing:1px;color:var(--muted);font-weight:700}
+.card{margin:10px 12px;border:1px solid var(--border);border-radius:12px;background:rgba(29,30,30,.97);overflow:hidden;transition:transform .25s,border-color .25s}.card:hover{transform:translateY(-3px);border-color:#4a4d4d}.banner{height:92px;display:flex;align-items:center;justify-content:center;font-size:29px;font-weight:900;position:relative;letter-spacing:2px}.b1{background:radial-gradient(circle at 30% 20%,#1d3a02,#0c1a01)}.b2{background:radial-gradient(circle at 70% 20%,#2a0202,#120101)}.b3{background:radial-gradient(circle at 30% 80%,#060660,#02021f)}.badge{position:absolute;top:10px;left:10px;font-size:9px;font-weight:900;padding:3px 9px;border-radius:999px;letter-spacing:1px}.b-live{background:#0c1a01;color:var(--lime);border:1px solid var(--lime)}.b-red{background:#2a0202;color:#ff6b6b;border:1px solid var(--red)}.b-blue{background:#02021f;color:#8f8fff;border:1px solid var(--blue)}
+.card-body{padding:12px 14px}.card-body h3{font-size:16px;margin:0 0 3px}.card-body p{color:var(--muted);font-size:12px;line-height:1.6;margin:0 0 10px}.tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}.tag2{font-size:10px;font-weight:700;color:#d4d4d4;background:#292a2a;border:1px solid var(--border);border-radius:6px;padding:3px 8px}.tag2.g{color:var(--lime);border-color:#1d3a02;background:#0f1a05}
+.server{background:#171818;border:1px solid var(--border);border-radius:10px;padding:10px 12px;margin-bottom:12px}.server h4{font-size:10px;letter-spacing:1.5px;color:var(--muted);margin:0 0 6px}.server div{font-size:12px;color:#c9c9c9;display:flex;justify-content:space-between;padding:2px 0}.server b{color:var(--lime)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:12px}.mini{border:1px solid var(--border);border-radius:10px;background:var(--card2);padding:12px}.mini .ic{font-size:20px}.mini b{font-size:12px;display:block;margin:5px 0 3px}.mini span{font-size:10px;color:var(--muted);line-height:1.5;display:block}.mini .chip{display:inline-block;font-size:9px;color:var(--lime);border:1px solid #1d3a02;border-radius:5px;padding:1px 6px;margin-top:6px}
+.asset-strip{display:flex;gap:8px;overflow:auto;padding:10px 12px 12px}.asset{min-width:72px;height:72px;border:1px solid var(--border);border-radius:10px;background:#111;display:flex;align-items:center;justify-content:center;overflow:hidden}.asset img{max-width:100%;max-height:100%;image-rendering:auto}.asset-label{font-size:8px;color:#777;text-align:center;margin-top:4px;white-space:nowrap}
+.footer{margin:12px;border:1px solid var(--border);border-radius:var(--radius);background:rgba(21,22,22,.96);padding:22px 16px;text-align:center}.footer h2{font-size:20px;font-weight:900;margin:0}.footer .links{font-size:11px;color:var(--muted);margin-top:10px;line-height:2}.footer .copy{font-size:10px;color:#6b6b6b;margin-top:8px}
+.bottomnav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;display:flex;background:rgba(17,17,17,.96);border-top:1px solid var(--border);z-index:60;backdrop-filter:blur(14px)}.bn-item{flex:1;text-align:center;padding:8px 0 7px;color:#8a8a8a;font-size:9px;font-weight:700}.bn-item .ic{width:36px;height:36px;border-radius:50%;margin:0 auto 2px;display:flex;align-items:center;justify-content:center;font-size:16px}.bn-item.active{color:var(--text)}.bn-item.active .ic{background:linear-gradient(180deg,var(--lime2),var(--lime));color:#080908}
+.reveal{opacity:0;transform:translateY(18px)}.source-note{font-size:9px;color:#666;text-align:center;padding:0 18px 10px}
+@media(max-width:380px){.cta{flex-direction:column}.btn{width:100%}.hero h1{font-size:34px}}
 </style>
 </head>
 <body>
-<div class="top"><div class="wrap"><span>UZZAP mobile community</span><span>24 Online · 258 Members</span></div></div>
-<div class="brandbar"><div class="wrap brand"><div><a class="logo" href="#home">UZZ<span>AP</span></a><div class="tagline">One community. Multiple worlds.</div></div><div class="actions"><a class="btn" href="#community">Sign in</a><a class="btn primary" href="#community">Join UZZAP</a></div></div></div>
-<nav class="nav"><div class="wrap"><a class="active" data-page="home" href="#home">Home</a><a data-page="chat" href="#chat">Chat</a><a data-page="games" href="#games">Games</a><a data-page="scripts" href="#scripts">Scripts</a><a data-page="projects" href="#projects">Projects</a><a data-page="top" href="#top">TOP</a><a data-page="about" href="#about">About</a></div></nav>
+<canvas id="webgl"></canvas>
+<div class="app">
+<div class="topbar"><div class="logo"><span class="lime">★</span> UZ<span class="lime">ZAP</span></div></div>
 
-<main>
-<div class="wrap">
-<section id="home" class="page show">
-<div class="hero"><h1>One community. Multiple worlds.</h1><p>Chat, play classic room games, discover projects and stay connected with the UZZAP community from one lightweight mobile-first place.</p><a class="btn" href="#chat">Open chat</a><a class="btn alt" href="#games">Browse games</a></div>
-<div class="stats"><div class="stat"><b>24</b><span>Online now</span></div><div class="stat"><b>258</b><span>Members</span></div><div class="stat"><b>68</b><span>Projects</span></div><div class="stat"><b>5</b><span>Room games</span></div></div>
-<div class="section"><div class="sectionhead"><h2>UZZAP Games</h2><a href="#games">View all</a></div><div class="grid3">
-<div class="card"><div class="thumb">UZZAP GAME</div><div class="cardbody"><h3>TRIVIA</h3><div class="muted">Fast questions for the room.</div><div class="chips"><span class="chip">Live</span><span class="chip">Room</span></div><a class="play" href="#games">Play now →</a></div></div>
-<div class="card"><div class="thumb">UZZAP GAME</div><div class="cardbody"><h3>GTA OPM</h3><div class="muted">Guess Filipino artists and songs.</div><div class="chips"><span class="chip">Music</span><span class="chip">OPM</span></div><a class="play" href="#games">Play now →</a></div></div>
-<div class="card"><div class="thumb">UZZAP GAME</div><div class="cardbody"><h3>GTA FOREIGN</h3><div class="muted">Guess international artists and songs.</div><div class="chips"><span class="chip">Music</span><span class="chip">Foreign</span></div><a class="play" href="#games">Play now →</a></div></div>
-</div></div>
-<div class="section"><div class="sectionhead"><h2>Live activity</h2><a href="#chat">More</a></div><div class="activity">
-<div class="activityrow"><b>Alrich</b> joined a UZZAP room <span>12s ago</span></div>
-<div class="activityrow"><b>Guest-204</b> finished a TRIVIA round <span>31s ago</span></div>
-<div class="activityrow"><b>CY</b> opened a community project <span>1m ago</span></div>
-</div></div>
-<div class="section columns"><div><div class="sectionhead"><h2>Latest projects</h2><a href="#projects">View all</a></div><div class="listbox">
-<div class="listrow"><b>UZZAP Mobile</b><small>Philippine mobile chat community · 10 unique · 14 clicks</small></div>
-<div class="listrow"><b>UZZAP Game Hub</b><small>Room games and activities · 8 unique · 12 clicks</small></div>
-<div class="listrow"><b>Retro Mobile Directory</b><small>Compact mobile-web projects · 5 unique · 9 clicks</small></div>
-</div></div>
-<div><div class="sectionhead"><h2>Today's TOP 3</h2><a href="#top">Full TOP</a></div><div class="listbox">
-<div class="listrow"><b>1 · CY</b><small>1,240 activity points</small></div>
-<div class="listrow"><b>2 · Alrich</b><small>980 activity points</small></div>
-<div class="listrow"><b>3 · Guest-204</b><small>745 activity points</small></div>
-</div></div></div>
+<section class="hero reveal">
+<h1>U<span class="lime">ZZAP</span></h1>
+<div class="tag">Philippine Chatrooms</div>
+<p>Public chatrooms organized by Philippine region and province. Realtime rooms, buddies, private chat with read receipts, invitations, moderation, emoticons and UzzapBot games.</p>
+<div class="cta"><button class="btn btn-lime" data-action="login">➜ Login to Network</button><button class="btn" data-action="rooms">▦ Browse Rooms</button></div>
+<div class="pills"><div class="pill">👥 <b>Buddy List</b></div><div class="pill">● <b>Available</b> / Not Available / Invisible</div><div class="pill">🤖 UzzapBot <b>4.9.6</b></div></div>
 </section>
 
-<section id="chat" class="page"><div class="sectionhead"><h2>UZZAP Chat</h2></div><div class="hero"><h1>Chat, play, and tambay.</h1><p>Join rooms, meet other members and keep the conversation moving.</p><a class="btn" href="#community">Join UZZAP</a></div><div class="grid3"><div class="card"><div class="cardbody"><h3>Southern Leyte</h3><div class="muted">12 online · Bisaya / Waray room</div></div></div><div class="card"><div class="cardbody"><h3>General Tambay</h3><div class="muted">8 online · Open community chat</div></div></div><div class="card"><div class="cardbody"><h3>Games Room</h3><div class="muted">4 online · Games and challenges</div></div></div></div></section>
-
-<section id="games" class="page"><div class="sectionhead"><h2>UZZAP Games</h2></div><div class="grid3">
-<div class="card"><div class="thumb">TRIVIA</div><div class="cardbody"><h3>TRIVIA</h3><div class="muted">Quick questions and room challenges.</div><a class="play" href="#chat">Open room →</a></div></div>
-<div class="card"><div class="thumb">GTA OPM</div><div class="cardbody"><h3>GTA OPM</h3><div class="muted">Guess the Filipino artist or song.</div><a class="play" href="#chat">Open room →</a></div></div>
-<div class="card"><div class="thumb">GTA FOREIGN</div><div class="cardbody"><h3>GTA FOREIGN</h3><div class="muted">Guess international artists and songs.</div><a class="play" href="#chat">Open room →</a></div></div>
-<div class="card"><div class="thumb">TWORDHUNT</div><div class="cardbody"><h3>TWORDHUNT</h3><div class="muted">Tagalog word-hunt challenge.</div><a class="play" href="#chat">Open room →</a></div></div>
-<div class="card"><div class="thumb">EWORDHUNT</div><div class="cardbody"><h3>EWORDHUNT</h3><div class="muted">English word-hunt challenge.</div><a class="play" href="#chat">Open room →</a></div></div>
-</div></section>
-
-<section id="scripts" class="page"><div class="sectionhead"><h2>UZZAP Scripts</h2></div><div class="listbox"><div class="listrow"><b>UZZAP Portal Starter</b><small>HTML · CSS · Mobile web</small></div><div class="listrow"><b>Retro Counter</b><small>HTML · JavaScript · Visitor statistics</small></div><div class="listrow"><b>Classic Guestbook</b><small>PHP · MySQL · Community tool</small></div></div></section>
-
-<section id="projects" class="page"><div class="sectionhead"><h2>UZZAP Projects</h2></div><div class="grid3"><div class="card"><div class="thumb">PROJECT</div><div class="cardbody"><h3>UZZAP Mobile</h3><div class="muted">Philippine mobile community.</div></div></div><div class="card"><div class="thumb">PROJECT</div><div class="cardbody"><h3>UZZAP Game Hub</h3><div class="muted">Room games and activities.</div></div></div><div class="card"><div class="thumb">PROJECT</div><div class="cardbody"><h3>Retro Mobile Directory</h3><div class="muted">Compact mobile-web projects.</div></div></div></div></section>
-
-<section id="top" class="page"><div class="sectionhead"><h2>Today's TOP 3</h2></div><div class="listbox"><div class="listrow"><b>1 · CY</b><small>1,240 activity points</small></div><div class="listrow"><b>2 · Alrich</b><small>980 activity points</small></div><div class="listrow"><b>3 · Guest-204</b><small>745 activity points</small></div></div></section>
-
-<section id="about" class="page"><div class="hero"><h1>About UZZAP</h1><p>UZZAP is a Philippine mobile community for chat rooms, games and community projects. This site keeps the compact WAP-era spirit while using a modern web foundation.</p></div></section>
-
-<section id="community" class="page"><div class="hero"><h1>Join UZZAP</h1><p>Sign in or create your UZZAP account to chat, play games and participate in the community.</p><a class="btn" href="#chat">Browse rooms</a></div></section>
+<div class="features reveal">
+<div class="feature"><div class="ic">🗺️</div><h3>Region → Province Rooms</h3><p>Choose a region, choose a province, join the province chatroom.</p></div>
+<div class="feature"><div class="ic">👥</div><h3>Buddies</h3><p>Add, remove, block, report — with Most Frequent and Pending groups.</p></div>
+<div class="feature"><div class="ic">✉️</div><h3>Private Chat</h3><p>One-to-one chat with Sent / Read receipts and unread state.</p></div>
+<div class="feature"><div class="ic">🙂</div><h3>Emoticons & Invites</h3><p>Uzzap emoticons, participants and buddy room invitations.</p></div>
 </div>
-</main>
 
-<footer class="footer"><div class="wrap footergrid"><div><b>UZZAP</b><p>One community. Multiple worlds.<br>Chat, games, rooms and projects.</p></div><div><b>Community</b><a href="#chat">Chat</a><a href="#games">Games</a><a href="#top">TOP</a></div><div><b>Projects</b><a href="#scripts">Scripts</a><a href="#projects">Projects</a><a href="#about">About</a></div></div><div class="wrap copy">© 2026 UZZAP · Mobile community</div></footer>
+<div class="section reveal">
+<div class="sec-title">💬 CHATROOMS</div><div class="sec-sub">CHOOSE A REGION. CHOOSE A PROVINCE. JOIN THE ROOM.</div>
+<div class="card">
+<div class="banner b1" style="color:var(--lime)">MAIN LOBBY <span class="badge b-live">OPEN</span></div>
+<div class="card-body"><h3>Main Lobby</h3><p>The main room of the Uzzap network. Realtime messages, participants, emoticons and buddy invitations.</p><div class="tags"><span class="tag2 g">Realtime</span><span class="tag2">Participants</span><span class="tag2">Emoticons</span><span class="tag2">Report user</span></div><div class="server"><h4>ROOM FEATURES</h4><div><span>Message status</span><b>Realtime</b></div><div><span>Buddy invites</span><b>Supported</b></div><div><span>System messages</span><b>Join / Leave</b></div></div><button class="btn-full bg-lime" data-action="room">▶ Join Room</button></div>
+</div>
+<div class="card">
+<div class="banner b2" style="color:#ff6b6b">PH REGIONS <span class="badge b-red">ROOM MAP</span></div>
+<div class="card-body"><h3>Region & Province Rooms</h3><p>Philippine regions are categories and provinces are the public chatrooms. The Android project defines the community around this structure.</p><div class="tags"><span class="tag2">Luzon</span><span class="tag2">Visayas</span><span class="tag2">Mindanao</span><span class="tag2 g">Province rooms</span></div><button class="btn-full bg-red" data-action="region">▶ Choose Region</button></div>
+</div>
+</div>
+
+<div class="section reveal">
+<div class="sec-title">🤖 UZZAPBOT GAMES</div><div class="sec-sub">UZZAPBOT 4.9.6 • CY AETHER CORE • PRODUCTION</div>
+<div class="card"><div class="banner b3" style="color:#8f8fff">WORDHUNT <span class="badge b-blue">GAME</span></div><div class="card-body"><h3>WordHunt</h3><p>Word-hunt gameplay backed by the UzzapBot game pool and anti-repeat selection.</p><div class="tags"><span class="tag2 g">Random pool</span><span class="tag2">Anti-repeat</span></div><button class="btn-full bg-blue" data-action="game">Play now →</button></div></div>
+<div class="card"><div class="banner b1" style="color:var(--lime)">TRIVIA <span class="badge b-live">GAME</span></div><div class="card-body"><h3>Trivia</h3><p>Room trivia served from the bot's question dataset with deterministic game commands.</p><div class="tags"><span class="tag2 g">Questions</span><span class="tag2">!top</span><span class="tag2">!topic</span><span class="tag2">!stop</span></div><button class="btn-full bg-lime" data-action="game">Play now →</button></div></div>
+<div class="card"><div class="banner b2" style="color:#ff6b6b">SCRAMBLE <span class="badge b-red">GAME</span></div><div class="card-body"><h3>Scramble</h3><p>Unscramble a word in the room while UzzapBot handles game state and room events.</p><button class="btn-full bg-red" data-action="game">Play now →</button></div></div>
+</div>
+
+<div class="section reveal">
+<div class="sec-title">📱 UZZAP ANDROID</div><div class="sec-sub">CLASSIC UZZAP EXPERIENCE • MODERN ANDROID REVIVAL</div>
+<div class="grid2">
+<div class="mini"><div class="ic">💬</div><b>Realtime rooms</b><span>Room browsing, joining/leaving, history pagination and reconnect recovery.</span><span class="chip">CHAT</span></div>
+<div class="mini"><div class="ic">👥</div><b>Buddies</b><span>Requests, add/remove, unread state, blocks, reports and invitations.</span><span class="chip">SOCIAL</span></div>
+<div class="mini"><div class="ic">✉️</div><b>Private chat</b><span>One-to-one messages with delivery and read receipts.</span><span class="chip">MESSAGING</span></div>
+<div class="mini"><div class="ic">🛡️</div><b>Moderation</b><span>Reports, warns, mute, kick, ban and moderator audit history.</span><span class="chip">SAFETY</span></div>
+</div>
+</div>
+
+<div class="section reveal">
+<div class="sec-title">🎨 ORIGINAL UZZAP ASSETS</div><div class="sec-sub">SELECTED FROM UZZAPANDROID RESOURCES</div>
+<div class="asset-strip">
+<a class="asset" href="https://raw.githubusercontent.com/cyanideph/UzzapAndroid/main/app/src/main/res/drawable/u_background_pattern.png"><img src="https://raw.githubusercontent.com/cyanideph/UzzapAndroid/main/app/src/main/res/drawable/u_background_pattern.png" alt="Uzzap background"></a>
+<a class="asset" href="https://raw.githubusercontent.com/cyanideph/UzzapAndroid/main/app/src/main/res/drawable/u_titlebar_middle.png"><img src="https://raw.githubusercontent.com/cyanideph/UzzapAndroid/main/app/src/main/res/drawable/u_titlebar_middle.png" alt="Uzzap titlebar"></a>
+<a class="asset" href="https://raw.githubusercontent.com/cyanideph/UzzapAndroid/main/app/src/main/res/drawable/u_functionbar_middle.png"><img src="https://raw.githubusercontent.com/cyanideph/UzzapAndroid/main/app/src/main/res/drawable/u_functionbar_middle.png" alt="Uzzap function bar"></a>
+<a class="asset" href="https://raw.githubusercontent.com/cyanideph/UzzapAndroid/main/app/src/main/res/drawable/u_menu_bottombar.png"><img src="https://raw.githubusercontent.com/cyanideph/UzzapAndroid/main/app/src/main/res/drawable/u_menu_bottombar.png" alt="Uzzap bottom bar"></a>
+<a class="asset" href="https://raw.githubusercontent.com/cyanideph/UzzapAndroid/main/app/src/main/res/drawable/d_buddylist_icon.png"><img src="https://raw.githubusercontent.com/cyanideph/UzzapAndroid/main/app/src/main/res/drawable/d_buddylist_icon.png" alt="Buddy list"></a>
+<a class="asset" href="https://raw.githubusercontent.com/cyanideph/UzzapAndroid/main/app/src/main/res/drawable/d_unread_icon.png"><img src="https://raw.githubusercontent.com/cyanideph/UzzapAndroid/main/app/src/main/res/drawable/d_unread_icon.png" alt="Unread"></a>
+<a class="asset" href="https://raw.githubusercontent.com/cyanideph/UzzapAndroid/main/app/src/main/res/drawable/d_titlebar_middle.png"><img src="https://raw.githubusercontent.com/cyanideph/UzzapAndroid/main/app/src/main/res/drawable/d_titlebar_middle.png" alt="Title bar"></a>
+</div>
+</div>
+
+<div class="section reveal"><div class="sec-title">⚡ UZZAPBOT</div><div class="grid2">
+<div class="mini"><div class="ic">🧠</div><b>CY Aether Core</b><span>Production UzzapBot 4.9.6 with Supabase Edge Function architecture and semantic memory.</span><span class="chip">AI</span></div>
+<div class="mini"><div class="ic">🎮</div><b>Room games</b><span>Bot-backed game datasets and deterministic gameplay for community rooms.</span><span class="chip">GAMES</span></div>
+<div class="mini"><div class="ic">🔎</div><b>Semantic memory</b><span>384-dimensional gte-small embeddings with HNSW search and intent reranking.</span><span class="chip">MEMORY</span></div>
+<div class="mini"><div class="ic">⚙️</div><b>Realtime pipeline</b><span>Android messaging connects through Supabase Realtime and server-side bot processing.</span><span class="chip">CORE</span></div>
+</div></div>
+
+<div class="footer reveal"><h2>U<span class="lime">ZZAP</span></h2><div class="links">Login to Network • Register • Forgotten Password<br>Help • About Uzzap • Available / Not Available / Invisible<br><a href="https://github.com/cyanideph/UzzapAndroid">UzzapAndroid source</a> • <a href="https://github.com/cyanideph/uzzapbot">UzzapBot source</a></div><div class="copy">© 2026 UZZAP • Unofficial web recreation using project assets</div></div>
+<div class="source-note">Content and assets are derived from the supplied UzzapAndroid and UzzapBot repositories.</div>
+</div>
+
+<nav class="bottomnav"><button class="bn-item active" data-action="home"><div class="ic">🏠</div>Home</button><button class="bn-item" data-action="rooms"><div class="ic">💬</div>Rooms</button><button class="bn-item" data-action="game"><div class="ic">🎮</div>Games</button><button class="bn-item" data-action="bot"><div class="ic">🤖</div>Bot</button><button class="bn-item" data-action="buddies"><div class="ic">👥</div>Buddies</button></nav>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.179.1/build/three.min.js"></script>
+<script type="module">
+import { animate, inView, stagger } from "https://cdn.jsdelivr.net/npm/motion@12.23.24/+esm";
+window.__motion={animate,inView,stagger};
+document.querySelectorAll(".reveal").forEach((el,i)=>{el.style.opacity=0;el.style.transform="translateY(18px)";animate(el,{opacity:1,transform:"translateY(0)"},{delay:i*.055,duration:.55,easing:"ease-out"});});
+</script>
 <script>
-const pages=[...document.querySelectorAll('.page')],links=[...document.querySelectorAll('[data-page]')];
-function route(){let id=(location.hash||'#home').slice(1);if(!document.getElementById(id)||!document.getElementById(id).classList.contains('page'))id='home';pages.forEach(p=>p.classList.toggle('show',p.id===id));links.forEach(a=>a.classList.toggle('active',a.dataset.page===id));scrollTo(0,0)}
-addEventListener('hashchange',route);route();
+const c=document.getElementById("webgl"),r=new THREE.WebGLRenderer({canvas:c,alpha:true,antialias:true});r.setPixelRatio(Math.min(devicePixelRatio,1.7));r.setSize(innerWidth,innerHeight);
+const s=new THREE.Scene(),cam=new THREE.PerspectiveCamera(45,innerWidth/innerHeight,.1,100);cam.position.z=7;
+const g=new THREE.BufferGeometry(),n=260,p=new Float32Array(n*3);
+for(let i=0;i<n;i++){p[i*3]=(Math.random()-.5)*9;p[i*3+1]=(Math.random()-.5)*12;p[i*3+2]=(Math.random()-.5)*5}
+g.setAttribute("position",new THREE.BufferAttribute(p,3));const m=new THREE.PointsMaterial({color:0x8EEF04,size:.025,transparent:true,opacity:.55});const stars=new THREE.Points(g,m);s.add(stars);
+let t=0;function loop(){t+=.002;stars.rotation.y=t;stars.rotation.x=Math.sin(t)*.12;r.render(s,cam);requestAnimationFrame(loop)}loop();
+addEventListener("resize",()=>{cam.aspect=innerWidth/innerHeight;cam.updateProjectionMatrix();r.setSize(innerWidth,innerHeight)});
+const actions={home:()=>scrollTo({top:0,behavior:"smooth"}),rooms:()=>document.querySelector(".section").scrollIntoView({behavior:"smooth"}),game:()=>document.querySelectorAll(".section")[1].scrollIntoView({behavior:"smooth"}),bot:()=>document.querySelectorAll(".section")[4].scrollIntoView({behavior:"smooth"}),buddies:()=>document.querySelector(".features").scrollIntoView({behavior:"smooth"}),room:()=>alert("UZZAP room navigation is ready for backend wiring."),region:()=>alert("Region → province navigation is ready for backend wiring."),login:()=>alert("Login UI is reserved for the UZZAP authentication flow." )};
+document.querySelectorAll("[data-action]").forEach(b=>b.addEventListener("click",()=>{let a=b.dataset.action;(actions[a]||actions.game)();document.querySelectorAll(".bn-item").forEach(x=>x.classList.toggle("active",x.dataset.action===a))}));
 </script>
 </body>
 </html>
