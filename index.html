@@ -151,16 +151,29 @@ for(let i=0;i<24;i++){
  root.add(new THREE.Line(g,lineMat));
 }
 const pointer={x:0,y:0}; addEventListener("pointermove",e=>{pointer.x=e.clientX/innerWidth-.5;pointer.y=e.clientY/innerHeight-.5});
-let targetScroll=0;scroll(v=>targetScroll=v.y.progress);\nconst chapterSections=[...document.querySelectorAll("main section[id]")];\nconst chapterLinks=[...document.querySelectorAll(".chapter-rail a")];\nconst updateChapter=()=>{let active="top",best=-Infinity;chapterSections.forEach(s=>{const d=Math.abs(s.getBoundingClientRect().top-innerHeight*.38);if(d<best||best===-Infinity){best=d;active=s.id}});chapterLinks.forEach(a=>a.classList.toggle("active",a.getAttribute("href")==="#"+active));};\naddEventListener("scroll",updateChapter,{passive:true});updateChapter();
+let targetScroll=0;scroll(v=>targetScroll=v.y.progress);
+const chapterSections=[...document.querySelectorAll("main section[id]")];
+const chapterLinks=[...document.querySelectorAll(".chapter-rail a")];
+const updateChapter=()=>{let active="top",best=-Infinity;chapterSections.forEach(s=>{const d=Math.abs(s.getBoundingClientRect().top-innerHeight*.38);if(d<best||best===-Infinity){best=d;active=s.id}});chapterLinks.forEach(a=>a.classList.toggle("active",a.getAttribute("href")==="#"+active));};
+addEventListener("scroll",updateChapter,{passive:true});updateChapter();
 function tick(t){
  const s=targetScroll;
+ const focus=Math.sin(s*Math.PI*5)*.12;
  root.rotation.y+=(pointer.x*.35+s*.65+focus-root.rotation.y)*.035;
  root.rotation.x+=(pointer.y*.18-root.rotation.x)*.025;
  root.position.y+=(s*1.2-root.position.y)*.025;
  ring.rotation.z+=.0008; ring2.rotation.z-=.00045;
  nodes.forEach((n,i)=>{n.scale.setScalar(1+Math.sin(t*.0015+i)*.22);n.material.opacity=.3+Math.sin(t*.001+i)*.18});
  camera.position.z+=(8.8+s*1.2-camera.position.z)*.02;
- const roomFocus=document.getElementById("rooms")?.getBoundingClientRect();\n const chatFocus=document.getElementById("chat")?.getBoundingClientRect();\n const botFocus=document.getElementById("bot")?.getBoundingClientRect();\n const nearBot=botFocus&&Math.abs(botFocus.top-innerHeight*.45)<innerHeight*.65;\n const nearChat=chatFocus&&Math.abs(chatFocus.top-innerHeight*.45)<innerHeight*.7;\n const nearRoom=roomFocus&&Math.abs(roomFocus.top-innerHeight*.45)<innerHeight*.7;\n const desired=nearBot?.26:nearChat?.48:nearRoom?.62:.72;\n canvas.style.opacity=String(reduced?.18:desired);\n renderer.render(scene,camera);requestAnimationFrame(tick);
+ const roomFocus=document.getElementById("rooms")?.getBoundingClientRect();
+ const chatFocus=document.getElementById("chat")?.getBoundingClientRect();
+ const botFocus=document.getElementById("bot")?.getBoundingClientRect();
+ const nearBot=botFocus&&Math.abs(botFocus.top-innerHeight*.45)<innerHeight*.65;
+ const nearChat=chatFocus&&Math.abs(chatFocus.top-innerHeight*.45)<innerHeight*.7;
+ const nearRoom=roomFocus&&Math.abs(roomFocus.top-innerHeight*.45)<innerHeight*.7;
+ const desired=nearBot?.26:nearChat?.48:nearRoom?.62:.72;
+ canvas.style.opacity=String(reduced?.18:desired);
+ renderer.render(scene,camera);requestAnimationFrame(tick);
 } requestAnimationFrame(tick);
 
 const botCanvas=document.getElementById("bot3d");
@@ -171,14 +184,16 @@ const core=new THREE.Mesh(new THREE.IcosahedronGeometry(1.25,4),new THREE.MeshBa
 const core2=new THREE.Mesh(new THREE.IcosahedronGeometry(.78,3),new THREE.MeshBasicMaterial({color:0xbaff8b,transparent:true,opacity:.06}));bg.add(core2);
 for(let i=0;i<18;i++){const a=i/18*Math.PI*2;const q=new THREE.Mesh(new THREE.SphereGeometry(.025,8,8),new THREE.MeshBasicMaterial({color:0x7dff3f}));q.position.set(Math.cos(a)*2.4,Math.sin(a)*1.5,Math.sin(a*2)*1.2);bg.add(q)}
 function brender(t){core.rotation.x=t*.00025;core.rotation.y=t*.0004;core2.rotation.y=-t*.00025;bg.rotation.z=Math.sin(t*.0003)*.12;br.render(bs,bc);requestAnimationFrame(brender)} requestAnimationFrame(brender);
-function resize(){renderer.setSize(innerWidth,innerHeight,false);camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();const r=botCanvas.parentElement.getBoundingClientRect();br.setSize(r.width,r.height,false);bc.aspect=r.width/r.height;bc.updateProjectionMatrix()} addEventListener("resize",resize);resize();\nif(reduced){canvas.style.opacity=".16";document.querySelectorAll(".bot-card canvas").forEach(x=>x.style.opacity=".45");}
+function resize(){renderer.setSize(innerWidth,innerHeight,false);camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();const r=botCanvas.parentElement.getBoundingClientRect();br.setSize(r.width,r.height,false);bc.aspect=r.width/r.height;bc.updateProjectionMatrix()} addEventListener("resize",resize);resize();
+if(reduced){canvas.style.opacity=".16";document.querySelectorAll(".bot-card canvas").forEach(x=>x.style.opacity=".45");}
 const cursor=document.getElementById("cursor"),loadline=document.getElementById("loadline"),preload=document.getElementById("preload");
 let mx=innerWidth/2,my=innerHeight/2,cx=mx,cy=my;
 addEventListener("pointermove",e=>{mx=e.clientX;my=e.clientY});
 function cursorLoop(){cx+=(mx-cx)*.18;cy+=(my-cy)*.18;cursor.style.left=cx+"px";cursor.style.top=cy+"px";requestAnimationFrame(cursorLoop)}cursorLoop();
 document.querySelectorAll("a,.visual,.game-orbit a").forEach(el=>{el.addEventListener("pointerenter",()=>cursor.classList.add("active"));el.addEventListener("pointerleave",()=>cursor.classList.remove("active"))});
 document.querySelectorAll(".visual").forEach(stage=>{stage.addEventListener("pointermove",e=>{if(innerWidth<851)return;const r=stage.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-.5;const y=(e.clientY-r.top)/r.height-.5;const p=stage.querySelector(".panel");if(!p)return;p.style.transform="rotateY("+(-13+x*8)+"deg) rotateX("+(4-y*6)+"deg) translateZ(20px)"});stage.addEventListener("pointerleave",()=>{{const p=stage.querySelector(".panel");if(p)p.style.transform=""}})});
-const gameStatus=document.getElementById("game-status");document.querySelectorAll(".game-orbit a").forEach((g,i)=>{g.addEventListener("click",e=>{if(i<3){e.preventDefault();document.querySelectorAll(".game-orbit a").forEach(x=>x.classList.remove("is-live"));g.classList.add("is-live");if(gameStatus)gameStatus.textContent=(i===0?"TRIVIA · READY FOR ROOM PLAY":i===1?"WORDHUNT · READY FOR ROOM PLAY":"GTA · READY FOR ROOM PLAY");}})});\ndocument.querySelectorAll(".enter,.navpill").forEach(btn=>{btn.addEventListener("pointermove",e=>{if(innerWidth<851)return;const r=btn.getBoundingClientRect();const x=(e.clientX-r.left-r.width/2)*.12;const y=(e.clientY-r.top-r.height/2)*.12;btn.style.transform="translate("+x+"px,"+y+"px)"});btn.addEventListener("pointerleave",()=>btn.style.transform="")});
+const gameStatus=document.getElementById("game-status");document.querySelectorAll(".game-orbit a").forEach((g,i)=>{g.addEventListener("click",e=>{if(i<3){e.preventDefault();document.querySelectorAll(".game-orbit a").forEach(x=>x.classList.remove("is-live"));g.classList.add("is-live");if(gameStatus)gameStatus.textContent=(i===0?"TRIVIA · READY FOR ROOM PLAY":i===1?"WORDHUNT · READY FOR ROOM PLAY":"GTA · READY FOR ROOM PLAY");}})});
+document.querySelectorAll(".enter,.navpill").forEach(btn=>{btn.addEventListener("pointermove",e=>{if(innerWidth<851)return;const r=btn.getBoundingClientRect();const x=(e.clientX-r.left-r.width/2)*.12;const y=(e.clientY-r.top-r.height/2)*.12;btn.style.transform="translate("+x+"px,"+y+"px)"});btn.addEventListener("pointerleave",()=>btn.style.transform="")});
 let n=0;const loader=setInterval(()=>{n=Math.min(100,n+Math.random()*18);loadline.style.width=n+"%"},90);
 function finishPreload(){clearInterval(loader);loadline.style.width="100%";setTimeout(()=>{preload.classList.add("hide");setTimeout(()=>preload.remove(),950)},250)}
 if(document.readyState==="complete")finishPreload();else addEventListener("load",finishPreload,{once:true});
