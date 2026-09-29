@@ -3,102 +3,110 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#07100a">
-<title>UZZAP — One community. Many worlds.</title>
-<meta name="description" content="UZZAP community, chat rooms, games and mobile-web projects.">
+<meta name="theme-color" content="#071009">
+<title>UZZAP — Community & Games</title>
+<meta name="description" content="UZZAP community, games, rooms and mobile-web projects.">
 <style>
-:root{--bg:#07100a;--surface:#0b160e;--surface2:#101d13;--line:#1e3222;--line2:#29432e;--green:#9cff37;--green2:#c9ff8a;--text:#edf5ec;--muted:#91a394;--dim:#627365;--gold:#e5c56b;--red:#ff7777;--radius:10px;--max:940px}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#030604;color:var(--text);font:14px/1.45 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}.wrap{max-width:var(--max);margin:auto;padding:0 10px}a{color:inherit;text-decoration:none}a:hover{color:var(--green)}button,input{font:inherit}
-.topline{border-bottom:1px solid var(--line);background:#050b06}.topbar{height:38px;display:flex;align-items:center;justify-content:space-between;gap:12px}.brand{font-weight:800;letter-spacing:.04em}.brand span{color:var(--green)}.version{font-size:11px;color:var(--muted);border:1px solid var(--line2);padding:3px 7px;border-radius:2px}.online{color:var(--green)}.online:before{content:"";display:inline-block;width:6px;height:6px;background:var(--green);border-radius:50%;margin:0 5px 1px 0}
-.nav{border-bottom:1px solid var(--line);background:#08110a}.navin{display:flex;gap:14px;overflow:auto;white-space:nowrap}.nav a{padding:8px 0;color:var(--muted);font-size:12px}.nav a.active,.nav a:hover{color:var(--green)}
-.hero{padding:22px 0 16px;text-align:center}.eyebrow{color:var(--green);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}.hero h1{font-size:clamp(26px,6vw,44px);line-height:1.02;margin:9px 0 8px;letter-spacing:-.04em}.hero p{max-width:620px;margin:0 auto;color:var(--muted);font-size:14px}.actions{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:18px}.btn{border:1px solid var(--green);background:var(--green);color:#071006;padding:8px 13px;border-radius:3px;font-weight:750;font-size:12px}.btn.alt{background:transparent;color:var(--green);border-color:var(--line2)}.btn:hover{color:#071006;filter:brightness(1.08)}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--surface);margin:4px 0 16px}.stat{text-align:center;padding:12px;border-right:1px solid var(--line)}.stat:last-child{border:0}.stat strong{display:block;font-size:19px}.stat small{color:var(--muted);font-size:10px}
-.features{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:20px}.feature{border:1px solid var(--line);background:var(--surface);border-radius:var(--radius);padding:13px}.feature b{font-size:12px}.feature p{margin:5px 0 0;color:var(--muted);font-size:11px}
-.section{margin:20px 0}.sectionhead{display:flex;justify-content:space-between;align-items:end;margin-bottom:9px}.sectionhead h2{font-size:15px;margin:0;letter-spacing:-.02em}.sectionhead a{font-size:11px;color:var(--green)}
-.games{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.card{border:1px solid var(--line);background:var(--surface);border-radius:var(--radius);padding:10px}.cardtop{display:flex;justify-content:space-between;gap:8px}.pill{font-size:9px;border:1px solid var(--line2);color:var(--muted);padding:2px 5px;border-radius:2px}.card h3{margin:9px 0 3px;font-size:14px}.card p{margin:0;color:var(--muted);font-size:11px}.card .play{display:inline-block;margin-top:11px;color:var(--green);font-size:11px;font-weight:700}
-.activity{border:1px solid var(--line);background:var(--surface);border-radius:var(--radius);overflow:hidden}.event{display:flex;justify-content:space-between;gap:10px;padding:8px 10px;border-bottom:1px solid var(--line);font-size:11px}.event:last-child{border:0}.event span:last-child{color:var(--dim);white-space:nowrap}
-.columns{display:grid;grid-template-columns:1fr 1fr;gap:8px}.list{border:1px solid var(--line);background:var(--surface);border-radius:var(--radius);overflow:hidden}.listrow{display:flex;justify-content:space-between;gap:10px;padding:8px 10px;border-bottom:1px solid var(--line);font-size:11px}.listrow:last-child{border:0}.listrow b{font-size:12px}.meta{display:block;color:var(--muted);font-size:10px;margin-top:2px}.score{color:var(--green);font-weight:700}
-.catalog{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.project{border:1px solid var(--line);background:var(--surface);border-radius:var(--radius);padding:10px}.project .type{color:var(--green);font-size:9px;text-transform:uppercase;letter-spacing:.08em}.project h3{font-size:13px;margin:5px 0 2px}.project p{margin:0;color:var(--muted);font-size:10px}.search{width:100%;margin:8px 0;padding:9px 10px;border:1px solid var(--line2);background:#050b06;color:var(--text);border-radius:3px;outline:none}.search:focus{border-color:var(--green)}
-.cta{border:1px solid var(--line2);background:linear-gradient(120deg,#0b170d,#09110a);border-radius:var(--radius);padding:14px;text-align:center;margin:30px 0}.cta h2{font-size:18px;margin:0 0 4px}.cta p{color:var(--muted);font-size:11px;margin:0 0 12px}
-footer{border-top:1px solid var(--line);padding:22px 0 30px;color:var(--muted);font-size:10px}.foot{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}.footlinks{display:flex;gap:13px}.footlinks a:hover{color:var(--green)}
-.modal{position:fixed;inset:0;background:#000b;display:none;align-items:center;justify-content:center;padding:18px;z-index:10}.modal.show{display:flex}.modalbox{width:min(420px,100%);background:#0a150c;border:1px solid var(--line2);border-radius:3px;padding:18px}.modalbox h2{margin:0 0 6px;font-size:18px}.modalbox p{color:var(--muted);font-size:12px}.modalbox .close{float:right;background:none;border:0;color:var(--muted);font-size:20px;cursor:pointer}
-@media(max-width:700px){.features{grid-template-columns:repeat(2,1fr)}.games,.catalog{grid-template-columns:1fr}.hero{padding-top:25px}.navin{gap:15px}.columns{grid-template-columns:1fr}}
-@media(max-width:380px){.wrap{padding:0 10px}.features{grid-template-columns:1fr}.stats{grid-template-columns:1fr}.stat{border-right:0;border-bottom:1px solid var(--line)}.stat:last-child{border-bottom:0}}
+:root{--bg:#050806;--panel:#09100b;--panel2:#0c150e;--line:#1b291e;--line2:#2a3d2c;--green:#a7f34b;--text:#eef3ed;--muted:#89968b;--dim:#647066;--gold:#d8bc64;--max:780px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:13px/1.45 Arial,Helvetica,sans-serif}.wrap{width:min(var(--max),100%);margin:auto;padding:0 12px}a{color:var(--green);text-decoration:none}a:hover{text-decoration:underline}button,input{font:inherit}
+header{border-bottom:1px solid var(--line);background:#060a07}.head{min-height:52px;display:flex;align-items:center;justify-content:space-between;gap:12px}.logo{font-size:20px;font-weight:bold;letter-spacing:.08em;color:#fff}.logo i{font-style:normal;color:var(--green)}.headright{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:11px}.dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--green);margin-right:4px}.signin{border:1px solid var(--line2);background:transparent;color:var(--green);padding:5px 9px;border-radius:2px;cursor:pointer}
+nav{border-bottom:1px solid var(--line);background:#081009}.nav{display:flex;gap:18px;overflow:auto;white-space:nowrap}.nav a{padding:8px 0;color:var(--muted);font-size:11px}.nav a:first-child,.nav a:hover{color:var(--green)}
+main{padding-bottom:30px}.intro{text-align:center;padding:25px 8px 17px}.version{display:inline-block;border:1px solid var(--line2);color:var(--muted);padding:2px 6px;font-size:9px;border-radius:2px;margin-bottom:9px}.intro h1{font-size:30px;line-height:1;margin:0 0 8px;letter-spacing:.05em}.intro p{margin:0 auto;color:var(--muted);max-width:500px;font-size:12px}.introlinks{margin-top:13px;display:flex;justify-content:center;gap:13px;font-size:11px}.primary{background:var(--green);color:#081006;padding:6px 11px;border-radius:2px;font-weight:bold}.secondary{border:1px solid var(--line2);padding:5px 10px;border-radius:2px}
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--panel);margin-bottom:18px}.metric{text-align:center;padding:9px 4px;border-right:1px solid var(--line)}.metric:last-child{border:0}.metric strong{display:block;font-size:16px}.metric span{font-size:9px;color:var(--muted);text-transform:uppercase}
+.section{margin:18px 0}.title{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:6px;margin-bottom:8px}.title h2{font-size:14px;margin:0}.title a{font-size:10px}
+.featurebar{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}.feature{background:var(--panel);padding:10px}.feature b{font-size:11px}.feature p{margin:3px 0 0;color:var(--muted);font-size:10px}
+.games{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.game{background:var(--panel);border:1px solid var(--line);padding:9px}.game:hover{border-color:var(--line2)}.gamehead{display:flex;justify-content:space-between;gap:5px;color:var(--muted);font-size:9px}.game h3{font-size:13px;margin:8px 0 3px}.game p{font-size:10px;color:var(--muted);margin:0}.play{display:inline-block;margin-top:8px;font-size:10px}
+.activity,.rows{border:1px solid var(--line);background:var(--panel)}.row{display:flex;justify-content:space-between;gap:12px;padding:8px 9px;border-bottom:1px solid var(--line);font-size:11px}.row:last-child{border:0}.row small{display:block;color:var(--muted);font-size:9px}.time{color:var(--dim);white-space:nowrap;font-size:9px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}.rank{display:flex;align-items:center;gap:9px}.ranknum{width:17px;color:var(--dim)}.rankname{flex:1}.rankscore{color:var(--green);font-weight:bold}
+.search{width:100%;background:#060a07;color:var(--text);border:1px solid var(--line2);padding:8px 9px;border-radius:2px;outline:0;margin-bottom:7px}.search:focus{border-color:var(--green)}.catalog{display:grid;grid-template-columns:repeat(2,1fr);gap:7px}.project{border:1px solid var(--line);background:var(--panel);padding:9px}.project b{font-size:11px}.project p{margin:3px 0 0;color:var(--muted);font-size:10px}.tag{font-size:8px;color:var(--green);text-transform:uppercase}
+.catalogmore{text-align:center;margin-top:9px;font-size:10px}.community{border:1px solid var(--line2);background:var(--panel2);text-align:center;padding:17px 10px;margin-top:22px}.community h2{font-size:16px;margin:0 0 4px}.community p{font-size:10px;color:var(--muted);margin:0 0 11px}
+footer{border-top:1px solid var(--line);color:var(--muted);font-size:9px;padding:18px 0 28px}.foot{text-align:center}.footbrand{font-size:13px;color:#fff;font-weight:bold;margin-bottom:4px}.footlinks{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin:9px 0}.footlinks a{color:var(--muted)}
+.modal{position:fixed;inset:0;background:#000b;display:none;align-items:center;justify-content:center;padding:14px;z-index:5}.modal.show{display:flex}.box{width:min(380px,100%);background:#09110b;border:1px solid var(--line2);padding:16px}.box h2{margin:0 0 5px;font-size:16px}.box p{margin:0 0 13px;color:var(--muted);font-size:11px}.close{float:right;background:none;border:0;color:var(--muted);font-size:20px;cursor:pointer}
+@media(max-width:620px){.games{grid-template-columns:1fr 1fr}.featurebar{grid-template-columns:1fr 1fr}.catalog{grid-template-columns:1fr}.two{grid-template-columns:1fr}.intro h1{font-size:28px}}
+@media(max-width:390px){.games{grid-template-columns:1fr}.metrics{grid-template-columns:1fr}.metric{border-right:0;border-bottom:1px solid var(--line)}.metric:last-child{border-bottom:0}.nav{gap:14px}}
 </style>
 </head>
 <body>
-<div class="topline"><div class="wrap topbar"><a class="brand" href="#home"><span>UZ</span>ZAP</a><div><span class="online">24 online</span> <button class="version" id="loginBtn">Sign in</button></div></div></div>
-<nav class="nav"><div class="wrap navin"><a class="active" href="#home">Home</a><a href="#games">Games</a><a href="#activity">Activity</a><a href="#scripts">Scripts</a><a href="#projects">Projects</a><a href="#top">TOP</a><a href="#community">Community</a></div></nav>
+<header><div class="wrap head"><a class="logo" href="#home"><i>UZ</i>ZAP</a><div class="headright"><span><span class="dot"></span>24 online</span><button class="signin" id="login">Sign in</button></div></div></header>
+<nav><div class="wrap nav"><a href="#home">Home</a><a href="#games">Games</a><a href="#activity">Activity</a><a href="#scripts">Scripts</a><a href="#projects">Projects</a><a href="#top">TOP</a><a href="#community">Community</a></div></nav>
 
 <main id="home" class="wrap">
-<section class="hero">
-<div class="eyebrow">WELCOME TO UZZAP</div>
+<section class="intro">
+<span class="version">v4.9 · UZZAP COMMUNITY</span>
 <h1>UZZAP</h1>
-<p>Chat, play and hang out with the UZZAP community.</p>
-<div class="actions"><a class="btn" href="#community">Sign in</a><a class="btn alt" href="#games">Browse</a></div>
+<p>One account. Multiple rooms. Chat, play, and hang out with the UZZAP community.</p>
+<div class="introlinks"><a class="primary" href="#community">Sign in</a><a class="secondary" href="#games">Browse games</a></div>
 </section>
 
-<div class="stats"><div class="stat"><strong>24</strong><small>ONLINE NOW</small></div><div class="stat"><strong>80+</strong><small>CHAT ROOMS</small></div><div class="stat"><strong>17</strong><small>REGIONS</small></div><div class="stat"><strong>v4.9</strong><small>VERSION</small></div></div>
+<div class="metrics"><div class="metric"><strong>24</strong><span>Online</span></div><div class="metric"><strong>80+</strong><span>Chat rooms</span></div><div class="metric"><strong>17</strong><span>Regions</span></div></div>
 
-<section class="features"><div class="feature"><b>Community</b><p>Chat rooms, members and live activity.</p></div><div class="feature"><b>Games</b><p>Quick multiplayer games for the room.</p></div><div class="feature"><b>Projects</b><p>Mobile-web projects and scripts.</p></div><div class="feature"><b>Mobile first</b><p>Fast, compact pages for phones.</p></div></section>
+<section class="section">
+<div class="featurebar">
+<div class="feature"><b>One account</b><p>One profile across UZZAP.</p></div>
+<div class="feature"><b>Community</b><p>Rooms, members and chat.</p></div>
+<div class="feature"><b>Games</b><p>Quick games for every room.</p></div>
+<div class="feature"><b>Mobile first</b><p>Fast compact pages.</p></div>
+</div>
+</section>
 
 <section class="section" id="games">
-<div class="sectionhead"><h2>UZZAP Games</h2><a href="#games">View all →</a></div>
+<div class="title"><h2>UZZAP Games</h2><a href="#games">View all</a></div>
 <div class="games">
-<div class="card"><div class="cardtop"><span class="pill">LIVE</span><span class="pill">MULTIPLAYER</span></div><h3>TRIVIA</h3><p>Fast questions, room competition and daily play.</p><a class="play" href="#community">Play now →</a></div>
-<div class="card"><div class="cardtop"><span class="pill">CLASSIC</span><span class="pill">MUSIC</span></div><h3>GTA OPM</h3><p>Guess the artist and title from Filipino music.</p><a class="play" href="#community">Play now →</a></div>
-<div class="card"><div class="cardtop"><span class="pill">CLASSIC</span><span class="pill">MUSIC</span></div><h3>GTA FOREIGN</h3><p>International artist and title guessing game.</p><a class="play" href="#community">Play now →</a></div>
-<div class="card"><div class="cardtop"><span class="pill">WORD</span></div><h3>TWORDHUNT</h3><p>Tagalog word-hunt challenge.</p><a class="play" href="#community">Play now →</a></div>
-<div class="card"><div class="cardtop"><span class="pill">WORD</span></div><h3>EWORDHUNT</h3><p>English word-hunt challenge.</p><a class="play" href="#community">Play now →</a></div>
-<div class="card"><div class="cardtop"><span class="pill">COMING</span></div><h3>More worlds</h3><p>New lightweight community games can live here.</p><a class="play" href="#community">Explore →</a></div>
+<article class="game"><div class="gamehead"><span>LIVE</span><span>ROOM</span></div><h3>TRIVIA</h3><p>Fast questions and room competition.</p><a class="play" href="#community">Play now →</a></article>
+<article class="game"><div class="gamehead"><span>CLASSIC</span><span>OPM</span></div><h3>GTA OPM</h3><p>Guess Filipino artists and songs.</p><a class="play" href="#community">Play now →</a></article>
+<article class="game"><div class="gamehead"><span>CLASSIC</span><span>FOREIGN</span></div><h3>GTA FOREIGN</h3><p>Guess international artists and songs.</p><a class="play" href="#community">Play now →</a></article>
+<article class="game"><div class="gamehead"><span>WORD</span></div><h3>TWORDHUNT</h3><p>Tagalog word-hunt challenge.</p><a class="play" href="#community">Play now →</a></article>
+<article class="game"><div class="gamehead"><span>WORD</span></div><h3>EWORDHUNT</h3><p>English word-hunt challenge.</p><a class="play" href="#community">Play now →</a></article>
+<article class="game"><div class="gamehead"><span>MORE</span></div><h3>More worlds</h3><p>New community games and activities.</p><a class="play" href="#community">Explore →</a></article>
 </div>
 </section>
 
 <section class="section" id="activity">
-<div class="sectionhead"><h2>Live activity</h2><a href="#activity">More →</a></div>
+<div class="title"><h2>Live activity</h2><a href="#activity">More</a></div>
 <div class="activity">
-<div class="event"><span><b>Alrich</b> entered Southern Leyte room.</span><span>12s ago</span></div>
-<div class="event"><span><b>Guest-204</b> finished a TRIVIA round.</span><span>31s ago</span></div>
-<div class="event"><span><b>CY</b> published a community update.</span><span>1m ago</span></div>
-<div class="event"><span><b>Guest-817</b> joined UZZAP.</span><span>2m ago</span></div>
+<div class="row"><span><b>Alrich</b> entered Southern Leyte room.</span><span class="time">12s</span></div>
+<div class="row"><span><b>Guest-204</b> finished a TRIVIA round.</span><span class="time">31s</span></div>
+<div class="row"><span><b>CY</b> published a community update.</span><span class="time">1m</span></div>
+<div class="row"><span><b>Guest-817</b> joined UZZAP.</span><span class="time">2m</span></div>
 </div>
 </section>
 
-<div class="columns">
-<section class="section" id="scripts"><div class="sectionhead"><h2>Latest scripts</h2><a href="#scripts">View all</a></div><div class="list">
-<div class="listrow"><span><b>UZZAP Portal Starter</b><span class="meta">HTML · PHP · 2026</span></span><span class="score">NEW</span></div>
-<div class="listrow"><span><b>Retro Counter</b><span class="meta">HTML · JS · 2026</span></span><span>0.0</span></div>
-<div class="listrow"><span><b>Classic Guestbook</b><span class="meta">PHP · MySQL · 2026</span></span><span>0.0</span></div>
+<div class="two">
+<section class="section" id="scripts"><div class="title"><h2>Latest scripts</h2><a href="#scripts">View all</a></div><div class="rows">
+<div class="row"><span><b>UZZAP Portal Starter</b><small>HTML · PHP · 2026</small></span><span class="rankscore">NEW</span></div>
+<div class="row"><span><b>Retro Counter</b><small>HTML · JS · 2026</small></span><span>0.0</span></div>
+<div class="row"><span><b>Classic Guestbook</b><small>PHP · MySQL · 2026</small></span><span>0.0</span></div>
 </div></section>
-<section class="section" id="top"><div class="sectionhead"><h2>Today's TOP 3</h2><a href="#top">Full TOP</a></div><div class="list">
-<div class="listrow"><span>1 <b>CY</b><span class="meta">UZZAP activity</span></span><span class="score">1,240</span></div>
-<div class="listrow"><span>2 <b>Alrich</b><span class="meta">Community</span></span><span>980</span></div>
-<div class="listrow"><span>3 <b>Guest-204</b><span class="meta">Games</span></span><span>745</span></div>
+<section class="section" id="top"><div class="title"><h2>Today's TOP 3</h2><a href="#top">Full TOP</a></div><div class="rows">
+<div class="row rank"><span class="ranknum">1</span><span class="rankname"><b>CY</b><small>UZZAP activity</small></span><span class="rankscore">1,240</span></div>
+<div class="row rank"><span class="ranknum">2</span><span class="rankname"><b>Alrich</b><small>Community</small></span><span>980</span></div>
+<div class="row rank"><span class="ranknum">3</span><span class="rankname"><b>Guest-204</b><small>Games</small></span><span>745</span></div>
 </div></section>
 </div>
 
 <section class="section" id="projects">
-<div class="sectionhead"><h2>Latest Projects</h2><a href="#projects">View all</a></div>
-<input class="search" id="search" placeholder="Search UZZAP projects..." autocomplete="off">
+<div class="title"><h2>Latest Projects</h2><a href="#projects">View all</a></div>
+<input class="search" id="search" placeholder="Search projects..." autocomplete="off">
 <div class="catalog" id="catalog">
-<div class="project"><span class="type">Community</span><h3>UZZAP Mobile</h3><p>Philippine mobile chat community.</p></div>
-<div class="project"><span class="type">WAP / WEB</span><h3>Retro Mobile Directory</h3><p>Compact collection of mobile-web projects.</p></div>
-<div class="project"><span class="type">Games</span><h3>UZZAP Game Hub</h3><p>Small-screen games and room activities.</p></div>
-<div class="project"><span class="type">Tools</span><h3>UZZAP Counters</h3><p>Lightweight counters and community stats.</p></div>
-<div class="project"><span class="type">Archive</span><h3>Legacy WAP Archive</h3><p>Preserve old mobile-web ideas and scripts.</p></div>
-<div class="project"><span class="type">Developer</span><h3>UZZAP Open Source</h3><p>Frontend experiments and reusable components.</p></div>
+<div class="project"><span class="tag">Community</span><br><b>UZZAP Mobile</b><p>Philippine mobile chat community.</p></div>
+<div class="project"><span class="tag">WAP / WEB</span><br><b>Retro Mobile Directory</b><p>Compact mobile-web projects.</p></div>
+<div class="project"><span class="tag">Games</span><br><b>UZZAP Game Hub</b><p>Small-screen games and room activities.</p></div>
+<div class="project"><span class="tag">Tools</span><br><b>UZZAP Counters</b><p>Lightweight counters and community stats.</p></div>
+<div class="project"><span class="tag">Archive</span><br><b>Legacy WAP Archive</b><p>Preserve mobile-web ideas and scripts.</p></div>
+<div class="project"><span class="tag">Developer</span><br><b>UZZAP Open Source</b><p>Frontend experiments and components.</p></div>
 </div>
+<div class="catalogmore"><a href="#projects">Browse full catalog →</a></div>
 </section>
 
-<section class="cta" id="community"><h2>Join the UZZAP community</h2><p>Chat, play and discover projects from one compact mobile-first hub.</p><button class="btn" id="registerBtn">Create account</button></section>
+<section class="community" id="community"><h2>Join the UZZAP community</h2><p>Chat, play, create and discover projects from one place.</p><button class="primary" id="register">Create account</button></section>
 </main>
 
-<footer><div class="wrap foot"><div><b>UZZAP</b><div>One community. Many worlds.</div></div><div class="footlinks"><a href="#home">Home</a><a href="#games">Games</a><a href="#scripts">Scripts</a><a href="#projects">Projects</a><a href="#community">Community</a></div><div>Frontend preview · 2026</div></div></footer>
+<footer><div class="wrap foot"><div class="footbrand">UZZAP</div><div>One community. Multiple rooms.</div><div class="footlinks"><a href="#home">Home</a><a href="#games">Games</a><a href="#scripts">Scripts</a><a href="#projects">Projects</a><a href="#community">Community</a><a href="#top">TOP</a></div><div>Frontend preview · v4.9 · 2026</div></div></footer>
 
-<div class="modal" id="modal"><div class="modalbox"><button class="close" id="close">×</button><h2>UZZAP</h2><p>Authentication is not connected in this frontend-only preview. The UI is ready for the future backend.</p><button class="btn" id="close2">Close</button></div></div>
+<div class="modal" id="modal"><div class="box"><button class="close" id="close">×</button><h2>UZZAP</h2><p>Sign-in and registration are not connected in this frontend-only preview. The portal UI is ready for the backend.</p><button class="primary" id="close2">Close</button></div></div>
 <script>
-const modal=document.getElementById('modal');document.getElementById('loginBtn').onclick=()=>modal.classList.add('show');document.getElementById('registerBtn').onclick=()=>modal.classList.add('show');document.getElementById('close').onclick=()=>modal.classList.remove('show');document.getElementById('close2').onclick=()=>modal.classList.remove('show');modal.onclick=e=>{if(e.target===modal)modal.classList.remove('show')};
-const input=document.getElementById('search'),cards=[...document.querySelectorAll('.project')];input.oninput=()=>{const q=input.value.toLowerCase();cards.forEach(c=>c.hidden=!c.innerText.toLowerCase().includes(q))};
+const m=document.getElementById('modal');document.getElementById('login').onclick=()=>m.classList.add('show');document.getElementById('register').onclick=()=>m.classList.add('show');document.getElementById('close').onclick=()=>m.classList.remove('show');document.getElementById('close2').onclick=()=>m.classList.remove('show');m.onclick=e=>{if(e.target===m)m.classList.remove('show')};
+const s=document.getElementById('search'),p=[...document.querySelectorAll('.project')];s.oninput=()=>{const q=s.value.toLowerCase();p.forEach(x=>x.hidden=!x.innerText.toLowerCase().includes(q))};
 </script>
 </body>
 </html>
