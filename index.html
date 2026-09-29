@@ -238,9 +238,9 @@ document.querySelectorAll(".game-orbit a").forEach((g,i)=>g.addEventListener("cl
 const chatInput=document.getElementById("chat-input"),chatSend=document.getElementById("chat-send"),chatFeed=document.getElementById("chat-feed");function sendChat(){const v=chatInput.value.trim();if(!v)return;const me=document.createElement("div");me.className="chat-msg me";me.textContent="CY · "+v;chatFeed.appendChild(me);chatInput.value="";chatFeed.scrollTop=chatFeed.scrollHeight;setTimeout(()=>{const bot=document.createElement("div");bot.className="chat-msg";bot.textContent="UzzapBot · tara, naa koy tubag ana 😄";chatFeed.appendChild(bot);chatFeed.scrollTop=chatFeed.scrollHeight;},500)}chatSend.addEventListener("click",sendChat);chatInput.addEventListener("keydown",e=>{if(e.key==="Enter")sendChat();});
 const navToggle=document.getElementById("nav-toggle"),mobileMenu=document.getElementById("mobile-menu");navToggle.addEventListener("click",()=>mobileMenu.classList.toggle("open"));mobileMenu.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>mobileMenu.classList.remove("open")));document.querySelectorAll(".enter,.navpill").forEach(btn=>{btn.addEventListener("pointermove",e=>{if(innerWidth<851)return;const r=btn.getBoundingClientRect();const x=(e.clientX-r.left-r.width/2)*.12;const y=(e.clientY-r.top-r.height/2)*.12;btn.style.transform="translate("+x+"px,"+y+"px)"});btn.addEventListener("pointerleave",()=>btn.style.transform="")});
 let n=0;const loader=setInterval(()=>{n=Math.min(100,n+Math.random()*18);loadline.style.width=n+"%"},90);
-function finishPreload(){clearInterval(loader);loadline.style.width="100%";setTimeout(()=>{preload.classList.add("hide");setTimeout(()=>preload.remove(),950)},250)}
+function finishPreload(){clearInterval(loader);loadline.style.width="100%";preload.classList.add("hide");setTimeout(()=>preload.remove(),700)}
 if(document.readyState==="complete")finishPreload();else addEventListener("load",finishPreload,{once:true});
-setTimeout(finishPreload,5000);
+setTimeout(finishPreload,1800);
 </script>
 </body>
 </html>
