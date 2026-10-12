@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Delete Account — UZZAP</title>
+<meta name="description" content="Request deletion of your Uzzap account and associated data.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#8EEF04;
+  --green-dim:#5da302;
+  --ink:#0a0f0a;
+  --panel:#0d130d;
+  --panel2:#111a11;
+  --line:#1f2b1f;
+  --txt:#e8f5e8;
+  --mut:#9db89d;
+  --red:#ff6b6b;
+  --px:'Press Start 2P',monospace;
+  --sans:'Inter',system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--ink);color:var(--txt);font-family:var(--sans);overflow-x:hidden}
+::selection{background:var(--green);color:#000}
+.scanlines{position:fixed;inset:0;pointer-events:none;z-index:50;mix-blend-mode:overlay;opacity:.5;
+  background:repeating-linear-gradient(0deg,rgba(255,255,255,.06) 0 1px,transparent 1px 3px)}
+.vignette{position:fixed;inset:0;pointer-events:none;z-index:49;
+  background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.55) 100%)}
+nav{position:sticky;top:0;z-index:60;display:flex;align-items:center;gap:26px;
+  padding:16px 28px;background:linear-gradient(180deg,rgba(5,8,5,.95),rgba(5,8,5,.75));
+  backdrop-filter:blur(8px)}
+.logo{font-family:var(--px);font-size:18px;color:var(--green);text-shadow:0 0 12px rgba(142,239,4,.8);letter-spacing:2px;text-decoration:none}
+.logo span{color:#fff;font-size:9px;vertical-align:super;text-shadow:none}
+nav a.nl{color:var(--mut);text-decoration:none;font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+nav a.nl:hover{color:var(--green)}
+nav .spacer{flex:1}
+.wrap{width:min(860px,92vw);margin:0 auto;padding:70px 0 90px}
+.kicker{font-family:var(--px);font-size:10px;color:var(--red);letter-spacing:3px;margin-bottom:22px}
+h1{font-family:var(--px);font-size:clamp(22px,4vw,38px);line-height:1.5;color:#fff;margin-bottom:10px}
+h1 em{font-style:normal;color:var(--red)}
+p{color:var(--mut);font-size:14.5px;line-height:1.75}
+p+p{margin-top:12px}
+.card{background:linear-gradient(160deg,var(--panel2),var(--panel));border:1px solid var(--line);
+  border-radius:12px;padding:26px;margin-top:26px}
+.card h2{font-family:var(--px);font-size:12px;color:var(--green);margin-bottom:14px;line-height:1.7}
+label{display:block;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);margin:16px 0 8px}
+input[type=email]{width:100%;background:#0a140a;border:1px solid var(--line);border-radius:8px;
+  color:var(--txt);font-size:15px;padding:14px 16px;font-family:var(--sans)}
+input[type=email]:focus{outline:none;border-color:var(--green)}
+.btn{font-family:var(--px);font-size:11px;padding:18px 26px;border-radius:6px;cursor:pointer;
+  display:inline-flex;align-items:center;gap:10px;letter-spacing:1px;margin-top:20px;border:2px solid #ff9a9a;
+  background:transparent;color:var(--red);transition:.18s}
+.btn:hover:not(:disabled){background:rgba(255,107,107,.12)}
+.btn:disabled{opacity:.45;cursor:wait}
+.btn-ghost{border-color:var(--line);color:var(--txt)}
+#status{margin-top:18px;font-size:14px;line-height:1.7;display:none;border-radius:8px;padding:14px 18px}
+#status.ok{display:block;background:rgba(142,239,4,.08);border:1px solid rgba(142,239,4,.4);color:var(--txt)}
+#status.err{display:block;background:rgba(255,107,107,.08);border:1px solid rgba(255,107,107,.4);color:var(--txt)}
+a{color:var(--green)}
+.warn{border-color:rgba(255,217,77,.4)!important}
+.warn h2{color:#ffd94d!important}
+ol{margin:12px 0 0 20px;color:var(--mut);font-size:14.5px;line-height:1.75}
+ol li+li{margin-top:8px}
+footer{border-top:1px solid var(--line);padding:60px 0 40px;color:var(--mut);font-size:12.5px;line-height:1.8}
+footer .wrap{padding:0}
+footer a{color:var(--green);text-decoration:none}
+.fine{opacity:.6;font-size:11px;max-width:760px;margin-top:14px}
+.flink{margin-right:22px}
+</style>
+</head>
+<body>
+<div class="scanlines"></div>
+<div class="vignette"></div>
+<nav>
+  <a class="logo" href="index.html">UZZAP<span>BETA</span></a>
+  <a class="nl" href="index.html#features">Features</a>
+  <a class="nl" href="index.html#download">Download</a>
+  <div class="spacer"></div>
+  <a class="nl" href="privacy.html">Privacy</a>
+</nav>
+
+<div class="wrap">
+  <div class="kicker">★ ACCOUNT ★</div>
+  <h1>DELETE YOUR <em>ACCOUNT</em></h1>
+  <p>Deleting your account permanently removes your profile, buddy list and message history. This cannot be undone. Limited records may be retained for security, fraud-prevention or legal reasons — see the <a href="privacy.html">privacy policy</a>.</p>
+
+  <div class="card">
+    <h2>OPTION 1 — INSIDE THE APP (FASTEST)</h2>
+    <ol>
+      <li>Open Uzzap and sign in.</li>
+      <li>Go to <b style="color:var(--txt)">Settings → Privacy → Request Account Deletion</b>.</li>
+      <li>Confirm. You'll be signed out immediately.</li>
+    </ol>
+  </div>
+
+  <div class="card warn">
+    <h2>OPTION 2 — WEB REQUEST (NO APP NEEDED)</h2>
+    <p>Uninstalled the app or can't sign in? Enter the email address on your account below. We record the request and complete deletion on the backend.</p>
+    <form id="delform">
+      <label for="email">Account email</label>
+      <input type="email" id="email" name="email" placeholder="you@example.com" required autocomplete="email">
+      <button class="btn" type="submit" id="submit">🗑&nbsp; REQUEST DELETION</button>
+    </form>
+    <div id="status" role="status"></div>
+    <p style="margin-top:16px;font-size:13px">Form not working? Use the <a href="https://mauhdrdnlrvjkekxencu.supabase.co/functions/v1/uzzap-privacy?delete=1">direct deletion resource</a>.</p>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <a class="flink" href="index.html">Home</a>
+      <a class="flink" href="privacy.html">Privacy Policy</a>
+      <a class="flink" href="delete-account.html">Delete Account</a>
+    </div>
+    <div style="margin-top:14px"><b style="font-family:var(--px);font-size:12px;color:var(--green)">UZZAP</b> — Modern Recreation by CY · 2026</div>
+    <p class="fine">This is an independent, unofficial recreation. The original Nokia/J2ME Uzzap application and its trademarks are separate materials and are not claimed as original CY work.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var form = document.getElementById('delform');
+  var status = document.getElementById('status');
+  var submit = document.getElementById('submit');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var email = document.getElementById('email').value.trim();
+    if (!email) return;
+    submit.disabled = true;
+    status.className = '';
+    status.textContent = 'Submitting…';
+    status.style.display = 'block';
+    fetch('https://mauhdrdnlrvjkekxencu.supabase.co/functions/v1/uzzap-privacy?delete=1', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({email: email})
+    }).then(function(res){
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      return res.text();
+    }).then(function(){
+      status.className = 'ok';
+      status.textContent = 'Request recorded for ' + email + '. Your account and data will be deleted. You can now uninstall the app.';
+      form.reset();
+    }).catch(function(){
+      status.className = 'err';
+      status.textContent = 'Could not submit automatically. Please use the direct deletion resource link above.';
+    }).finally(function(){
+      submit.disabled = false;
+    });
+  });
+})();
+</script>
+</body>
+</html>

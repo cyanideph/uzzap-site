@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — UZZAP</title>
+<meta name="description" content="Uzzap privacy policy: what data the app processes, how it is used, and your rights.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#8EEF04;
+  --green-dim:#5da302;
+  --ink:#0a0f0a;
+  --panel:#0d130d;
+  --panel2:#111a11;
+  --line:#1f2b1f;
+  --txt:#e8f5e8;
+  --mut:#9db89d;
+  --px:'Press Start 2P',monospace;
+  --sans:'Inter',system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--ink);color:var(--txt);font-family:var(--sans);overflow-x:hidden}
+::selection{background:var(--green);color:#000}
+.scanlines{position:fixed;inset:0;pointer-events:none;z-index:50;mix-blend-mode:overlay;opacity:.5;
+  background:repeating-linear-gradient(0deg,rgba(255,255,255,.06) 0 1px,transparent 1px 3px)}
+.vignette{position:fixed;inset:0;pointer-events:none;z-index:49;
+  background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.55) 100%)}
+nav{position:sticky;top:0;z-index:60;display:flex;align-items:center;gap:26px;
+  padding:16px 28px;background:linear-gradient(180deg,rgba(5,8,5,.95),rgba(5,8,5,.75));
+  backdrop-filter:blur(8px)}
+.logo{font-family:var(--px);font-size:18px;color:var(--green);text-shadow:0 0 12px rgba(142,239,4,.8);letter-spacing:2px;text-decoration:none}
+.logo span{color:#fff;font-size:9px;vertical-align:super;text-shadow:none}
+nav a.nl{color:var(--mut);text-decoration:none;font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+nav a.nl:hover{color:var(--green)}
+nav .spacer{flex:1}
+.wrap{width:min(860px,92vw);margin:0 auto;padding:70px 0 90px}
+.kicker{font-family:var(--px);font-size:10px;color:var(--green);letter-spacing:3px;margin-bottom:22px}
+h1{font-family:var(--px);font-size:clamp(22px,4vw,38px);line-height:1.5;color:#fff;margin-bottom:10px}
+h1 em{font-style:normal;color:var(--green)}
+.updated{color:var(--mut);font-size:13px;margin-bottom:44px}
+h2{font-family:var(--px);font-size:13px;color:var(--green);margin:38px 0 14px;line-height:1.7}
+p,li{color:var(--mut);font-size:14.5px;line-height:1.75}
+p+p{margin-top:12px}
+ul{margin:12px 0 0 20px}
+li+li{margin-top:6px}
+.card{background:linear-gradient(160deg,var(--panel2),var(--panel));border:1px solid var(--line);
+  border-radius:12px;padding:22px 24px;margin-top:18px}
+.card b{color:var(--txt)}
+a{color:var(--green)}
+.btn{font-family:var(--px);font-size:11px;text-decoration:none;padding:16px 24px;border-radius:6px;cursor:pointer;
+  display:inline-flex;align-items:center;gap:10px;background:var(--green);color:#061100;border:2px solid #b9ff5e;
+  box-shadow:0 0 26px rgba(142,239,4,.55);margin-top:26px}
+.btn:hover{transform:translateY(-3px)}
+footer{border-top:1px solid var(--line);padding:60px 0 40px;color:var(--mut);font-size:12.5px;line-height:1.8}
+footer .wrap{padding:0}
+footer a{color:var(--green);text-decoration:none}
+.fine{opacity:.6;font-size:11px;max-width:760px;margin-top:14px}
+.flink{margin-right:22px}
+</style>
+</head>
+<body>
+<div class="scanlines"></div>
+<div class="vignette"></div>
+<nav>
+  <a class="logo" href="index.html">UZZAP<span>BETA</span></a>
+  <a class="nl" href="index.html#features">Features</a>
+  <a class="nl" href="index.html#download">Download</a>
+  <div class="spacer"></div>
+  <a class="nl" href="delete-account.html">Delete Account</a>
+</nav>
+
+<div class="wrap">
+  <div class="kicker">★ LEGAL ★</div>
+  <h1>PRIVACY <em>POLICY</em></h1>
+  <p class="updated">Last updated: September 23, 2026 · Applies to the Uzzap Android app (com.cy.uzzap) by CY</p>
+
+  <h2>INFORMATION WE PROCESS</h2>
+  <p>Uzzap may process account and authentication information such as email address, user ID, username, nickname, profile information and account status.</p>
+  <p>Uzzap also processes content you voluntarily submit, including room messages, private messages, buddy activity, reports and other user-generated content.</p>
+  <p>Uzzap may process push-notification identifiers required to deliver notifications.</p>
+
+  <h2>HOW WE USE INFORMATION</h2>
+  <p>We use information to provide authentication, profiles, rooms, messaging, buddies, delivery/read receipts, notifications, blocking, reporting, moderation, UzzapBot features, security, abuse prevention, troubleshooting, support and legal compliance.</p>
+
+  <h2>SERVICE PROVIDERS</h2>
+  <div class="card">
+    <p><b>Supabase</b> — authentication, database storage and realtime/backend services.</p>
+    <p><b>Firebase Cloud Messaging (FCM)</b> — push notifications. Firebase Analytics collection is disabled in the application.</p>
+    <p><b>Configured AI service</b> — when UzzapBot's AI conversational feature is enabled and a message is selected for AI processing, relevant message text may be sent to Uzzap's configured AI service for response generation. Passwords and authentication credentials are not intentionally sent to the AI service.</p>
+  </div>
+
+  <h2>CHAT CONTENT</h2>
+  <p>Messages sent to a room may be visible to other members of that room. Private messages are intended for their participants, subject to security, reporting and moderation functionality.</p>
+  <p>Do not send passwords, authentication credentials, financial information, government identification numbers or other highly sensitive information through chat.</p>
+
+  <h2>MODERATION AND REPORTS</h2>
+  <p>Uzzap processes information needed for blocking, reporting and moderation. Certain moderation or security records may be retained when reasonably necessary for abuse prevention, fraud prevention, security or legal compliance.</p>
+
+  <h2>SHARING</h2>
+  <p>Uzzap does not sell personal information. Information may be processed by service providers acting on our behalf, and may be disclosed when required by law or reasonably necessary to protect users, the service or others.</p>
+
+  <h2>SECURITY</h2>
+  <p>Uzzap uses reasonable technical and organizational safeguards and encrypted network connections for supported backend communication. No Internet service can guarantee absolute security.</p>
+
+  <h2>RETENTION AND DELETION</h2>
+  <p>Information is retained only as reasonably necessary to operate Uzzap. Uzzap provides account deletion inside the app and an external web-based deletion request resource. When an account is deleted, associated account data is deleted unless specific information must be retained for legitimate security, fraud-prevention or legal reasons.</p>
+  <a class="btn" href="delete-account.html">🗑&nbsp; DELETE MY ACCOUNT</a>
+
+  <h2>CHILDREN'S PRIVACY</h2>
+  <p>Uzzap is not intended to knowingly collect personal information from children in violation of applicable law. Users must meet applicable minimum-age requirements.</p>
+
+  <h2>NOTIFICATIONS AND PERMISSIONS</h2>
+  <p>Uzzap may send notifications for messages, buddy activity, security events and other app activity. The Android application uses Internet, network-state, notification and vibration permissions.</p>
+
+  <h2>CHANGES</h2>
+  <p>We may update this policy when features, services, legal requirements or data practices change. The last-updated date will be changed when material updates are made.</p>
+
+  <h2>PRIVACY CONTACT</h2>
+  <p>Privacy questions and account-deletion requests can be submitted through the official Uzzap account-deletion web resource.</p>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <a class="flink" href="index.html">Home</a>
+      <a class="flink" href="privacy.html">Privacy Policy</a>
+      <a class="flink" href="delete-account.html">Delete Account</a>
+    </div>
+    <div style="margin-top:14px"><b style="font-family:var(--px);font-size:12px;color:var(--green)">UZZAP</b> — Modern Recreation by CY · 2026</div>
+    <p class="fine">This is an independent, unofficial recreation. The original Nokia/J2ME Uzzap application and its trademarks are separate materials and are not claimed as original CY work.</p>
+  </div>
+</footer>
+</body>
+</html>
