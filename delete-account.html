@@ -137,14 +137,16 @@ footer a{color:var(--green);text-decoration:none}
     status.className = '';
     status.textContent = 'Submitting…';
     status.style.display = 'block';
-    fetch('https://mauhdrdnlrvjkekxencu.supabase.co/functions/v1/uzzap-privacy?delete=1', {
+    // The endpoint consumes form-encoded bodies (email field), not JSON.
+    fetch('https://hrjgblvxhtbopuyzyasu.supabase.co/functions/v1/uzzap-privacy?delete=1', {
       method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({email: email})
+      headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'},
+      body: 'email=' + encodeURIComponent(email)
     }).then(function(res){
       if (!res.ok) throw new Error('HTTP ' + res.status);
       return res.text();
-    }).then(function(){
+    }).then(function(text){
+      if (text.indexOf('Invalid request') !== -1) throw new Error('invalid email');
       status.className = 'ok';
       status.textContent = 'Request recorded for ' + email + '. Your account and data will be deleted. You can now uninstall the app.';
       form.reset();
