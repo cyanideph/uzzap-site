@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ — UZZAP</title>
+<meta name="description" content="Uzzap FAQ: Is it free? What Android version? Is this the original Uzzap? Where is my data stored?">
+<meta property="og:title" content="Uzzap FAQ">
+<meta property="og:description" content="Is it free? What Android version? Is this the original Uzzap? Answers here.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://cyanideph.github.io/uzzap-site/faq.html">
+<meta property="og:image" content="https://cyanideph.github.io/uzzap-site/emo/d_dolphin1.png">
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/png" href="emo/d_dolphin1.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#8EEF04;
+  --ink:#0a0f0a;
+  --panel:#0d130d;
+  --panel2:#111a11;
+  --line:#1f2b1f;
+  --txt:#e8f5e8;
+  --mut:#9db89d;
+  --px:'Press Start 2P',monospace;
+  --sans:'Inter',system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--ink);color:var(--txt);font-family:var(--sans);overflow-x:hidden}
+::selection{background:var(--green);color:#000}
+.scanlines{position:fixed;inset:0;pointer-events:none;z-index:50;mix-blend-mode:overlay;opacity:.5;background:repeating-linear-gradient(0deg,rgba(255,255,255,.06) 0 1px,transparent 1px 3px)}
+.vignette{position:fixed;inset:0;pointer-events:none;z-index:49;background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.55) 100%)}
+nav{position:sticky;top:0;z-index:60;display:flex;align-items:center;gap:26px;padding:16px 28px;background:linear-gradient(180deg,rgba(5,8,5,.95),rgba(5,8,5,.75));backdrop-filter:blur(8px)}
+.logo{font-family:var(--px);font-size:18px;color:var(--green);text-shadow:0 0 12px rgba(142,239,4,.8);letter-spacing:2px;text-decoration:none}
+.logo span{color:#fff;font-size:9px;vertical-align:super;text-shadow:none}
+nav a.nl{color:var(--mut);text-decoration:none;font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+nav a.nl:hover{color:var(--green)}
+nav .spacer{flex:1}
+@media(max-width:760px){nav a.nl{display:none}}
+.wrap{width:min(860px,92vw);margin:0 auto;padding:70px 0 90px}
+.kicker{font-family:var(--px);font-size:10px;color:var(--green);letter-spacing:3px;margin-bottom:22px}
+h1{font-family:var(--px);font-size:clamp(22px,4vw,38px);line-height:1.5;color:#fff;margin-bottom:10px}
+h1 em{font-style:normal;color:var(--green)}
+.sub{color:var(--mut);max-width:640px;line-height:1.7;margin-bottom:40px}
+.qa{background:linear-gradient(160deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:12px;padding:24px;margin-bottom:16px}
+.qa h2{font-size:16px;color:#fff;margin-bottom:10px;line-height:1.6}
+.qa h2 .q{color:var(--green);font-family:var(--px);font-size:11px;margin-right:10px}
+.qa p{color:var(--mut);font-size:14.5px;line-height:1.75}
+.qa p+p{margin-top:10px}
+.qa a{color:var(--green)}
+footer{border-top:1px solid var(--line);padding:60px 0 40px;color:var(--mut);font-size:12.5px;line-height:1.8}
+footer .wrap{padding:0}
+footer a{color:var(--green);text-decoration:none}
+.fine{opacity:.6;font-size:11px;max-width:760px;margin-top:14px}
+.flink{margin-right:22px}
+</style>
+</head>
+<body>
+<div class="scanlines"></div>
+<div class="vignette"></div>
+<nav>
+  <a class="logo" href="index.html">UZZAP<span>BETA</span></a>
+  <a class="nl" href="index.html#features">Features</a>
+  <a class="nl" href="index.html#download">Download</a>
+  <a class="nl" href="rooms.html">Rooms</a>
+  <div class="spacer"></div>
+  <a class="nl" href="privacy.html">Privacy</a>
+</nav>
+
+<div class="wrap">
+  <div class="kicker">★ QUESTIONS ★</div>
+  <h1>BEFORE YOU <em>ASK.</em></h1>
+  <p class="sub">Quick answers. Still stuck? Open an issue on the <a href="https://github.com/cyanideph/UzzapAndroid">UzzapAndroid repo</a>.</p>
+
+  <div class="qa"><h2><span class="q">Q&gt;</span>Is Uzzap free?</h2><p>Yes. Free to download, free to chat. No carrier fees — that era is over.</p></div>
+  <div class="qa"><h2><span class="q">Q&gt;</span>What Android version do I need?</h2><p>Android 9.0 or newer, plus an internet connection. Download the APK, allow <i>Install from unknown sources</i> once, and register in the app.</p></div>
+  <div class="qa"><h2><span class="q">Q&gt;</span>Is this the original Uzzap?</h2><p>No. This is an independent, unofficial recreation of the classic Nokia/J2ME Uzzap experience — rebuilt from scratch in Kotlin. Not affiliated with the original owners.</p></div>
+  <div class="qa"><h2><span class="q">Q&gt;</span>Where is my data stored?</h2><p>On Uzzap's secure cloud backend. Your account survives reinstalls — just sign back in. See the <a href="privacy.html">privacy policy</a>.</p></div>
+  <div class="qa"><h2><span class="q">Q&gt;</span>How do I delete my account?</h2><p>In the app: Settings → Privacy → Request Account Deletion. Without the app: use the <a href="delete-account.html">web deletion page</a>.</p></div>
+  <div class="qa"><h2><span class="q">Q&gt;</span>Which rooms exist?</h2><p>83 province rooms across 18 Philippine regions, plus a moderator room. Browse them all on the <a href="rooms.html">rooms page</a>.</p></div>
+  <div class="qa"><h2><span class="q">Q&gt;</span>The app says Beta — what breaks?</h2><p>Occasionally: features may glitch and accounts may be reset during the beta. See the <a href="changelog.html">changelog</a> for what's new and what's fixed.</p></div>
+  <div class="qa"><h2><span class="q">Q&gt;</span>Someone is harassing me. What do I do?</h2><p>Block them (chat options → Block User) and file a report (Report User). Moderators review every report and can warn, mute, kick or ban.</p></div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <a class="flink" href="index.html">Home</a>
+      <a class="flink" href="rooms.html">Rooms</a>
+      <a class="flink" href="faq.html">FAQ</a>
+      <a class="flink" href="changelog.html">Changelog</a>
+      <a class="flink" href="privacy.html">Privacy Policy</a>
+      <a class="flink" href="delete-account.html">Delete Account</a>
+    </div>
+    <div style="margin-top:14px"><b style="font-family:var(--px);font-size:12px;color:var(--green)">UZZAP</b> — Modern Recreation by CY · 2026</div>
+    <p class="fine">This is an independent, unofficial recreation. The original Nokia/J2ME Uzzap application and its trademarks are separate materials and are not claimed as original CY work.</p>
+  </div>
+</footer>
+</body>
+</html>

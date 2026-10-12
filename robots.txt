@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://cyanideph.github.io/uzzap-site/sitemap.xml
