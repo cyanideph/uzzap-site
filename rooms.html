@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chat Rooms — UZZAP</title>
+<meta name="description" content="All 83 Uzzap chatrooms across 18 Philippine regions. Find your province room: Ilocos, Cebu, Davao, Metro Manila and more.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#8EEF04;
+  --ink:#0a0f0a;
+  --panel:#0d130d;
+  --panel2:#111a11;
+  --line:#1f2b1f;
+  --txt:#e8f5e8;
+  --mut:#9db89d;
+  --px:'Press Start 2P',monospace;
+  --sans:'Inter',system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--ink);color:var(--txt);font-family:var(--sans);overflow-x:hidden}
+::selection{background:var(--green);color:#000}
+.scanlines{position:fixed;inset:0;pointer-events:none;z-index:50;mix-blend-mode:overlay;opacity:.5;background:repeating-linear-gradient(0deg,rgba(255,255,255,.06) 0 1px,transparent 1px 3px)}
+.vignette{position:fixed;inset:0;pointer-events:none;z-index:49;background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.55) 100%)}
+nav{position:sticky;top:0;z-index:60;display:flex;align-items:center;gap:26px;padding:16px 28px;background:linear-gradient(180deg,rgba(5,8,5,.95),rgba(5,8,5,.75));backdrop-filter:blur(8px)}
+.logo{font-family:var(--px);font-size:18px;color:var(--green);text-shadow:0 0 12px rgba(142,239,4,.8);letter-spacing:2px;text-decoration:none}
+.logo span{color:#fff;font-size:9px;vertical-align:super;text-shadow:none}
+nav a.nl{color:var(--mut);text-decoration:none;font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+nav a.nl:hover{color:var(--green)}
+nav .spacer{flex:1}
+@media(max-width:760px){nav a.nl{display:none}}
+.wrap{width:min(1200px,92vw);margin:0 auto;padding:70px 0 90px}
+.kicker{font-family:var(--px);font-size:10px;color:var(--green);letter-spacing:3px;margin-bottom:22px}
+h1{font-family:var(--px);font-size:clamp(22px,4vw,38px);line-height:1.5;color:#fff;margin-bottom:10px}
+h1 em{font-style:normal;color:var(--green)}
+.sub{color:var(--mut);max-width:640px;line-height:1.7;margin-bottom:34px}
+.search{width:100%;background:#0a140a;border:1px solid var(--line);border-radius:8px;color:var(--txt);font-size:15px;padding:16px 18px;font-family:var(--sans);margin-bottom:30px}
+.search:focus{outline:none;border-color:var(--green)}
+.region{background:linear-gradient(160deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:12px;padding:26px;margin-bottom:18px}
+.region h2{font-family:var(--px);font-size:12px;color:#fff;line-height:1.8;margin-bottom:16px}
+.region h2 .count{color:var(--green);font-size:10px;margin-left:10px}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.room{font-size:13px;font-weight:600;color:var(--txt);background:rgba(142,239,4,.07);border:1px solid var(--line);border-radius:20px;padding:8px 16px;transition:.15s}
+.room:hover{border-color:var(--green);color:var(--green)}
+.hidden{display:none}
+.cta{text-align:center;margin-top:54px}
+.cta p{color:var(--mut);margin-bottom:20px}
+.btn{font-family:var(--px);font-size:11px;text-decoration:none;padding:18px 26px;border-radius:6px;display:inline-flex;align-items:center;gap:10px;background:var(--green);color:#061100;border:2px solid #b9ff5e;box-shadow:0 0 26px rgba(142,239,4,.55)}
+.btn:hover{transform:translateY(-3px)}
+footer{border-top:1px solid var(--line);padding:60px 0 40px;color:var(--mut);font-size:12.5px;line-height:1.8}
+footer .wrap{padding:0}
+footer a{color:var(--green);text-decoration:none}
+.fine{opacity:.6;font-size:11px;max-width:760px;margin-top:14px}
+.flink{margin-right:22px}
+</style>
+</head>
+<body>
+<div class="scanlines"></div>
+<div class="vignette"></div>
+<nav>
+  <a class="logo" href="index.html">UZZAP<span>BETA</span></a>
+  <a class="nl" href="index.html#features">Features</a>
+  <a class="nl" href="index.html#download">Download</a>
+  <a class="nl" href="rooms.html">Rooms</a>
+  <div class="spacer"></div>
+  <a class="nl" href="privacy.html">Privacy</a>
+</nav>
+<div class="wrap">
+  <div class="kicker">★ 18 REGIONS · 83 ROOMS ★</div>
+  <h1>FIND YOUR <em>PROVINCE.</em></h1>
+  <p class="sub">Every Uzzap chatroom, grouped the way the app shows them: Philippine regions as categories, provinces as rooms. Type to filter, then open the app and join.</p>
+  <input class="search" id="q" type="search" placeholder="Search provinces or regions… (e.g. Cebu, Bicol, Mindanao)" autocomplete="off">
+  <div id="regions">
+    <div class="region" data-region="region i - ilocos region">
+      <h2>REGION I - ILOCOS REGION <span class="count">4 rooms</span></h2>
+      <div class="chips">
+      <span class="room" data-name="ilocos norte">Ilocos Norte</span>
+      <span class="room" data-name="ilocos sur">Ilocos Sur</span>
+      <span class="room" data-name="la union">La Union</span>
+      <span class="room" data-name="pangasinan">Pangasinan</span>
+      </div>
+    </div>
+    <div class="region" data-region="cordillera administrative region">
+      <h2>CORDILLERA ADMINISTRATIVE REGION <span class="count">6 rooms</span></h2>
+      <div class="chips">
+      <span class="room" data-name="abra">Abra</span>
+      <span class="room" data-name="apayao">Apayao</span>
+      <span class="room" data-name="benguet">Benguet</span>
+      <span class="room" data-name="ifugao">Ifugao</span>
+      <span class="room" data-name="kalinga">Kalinga</span>
+      <span class="room" data-name="mountain province">Mountain Province</span>
+      </div>
+    </div>
+    <div class="region" data-region="region ii - cagayan valley">
+      <h2>REGION II - CAGAYAN VALLEY <span class="count">5 rooms</span></h2>
+      <div class="chips">
+      <span class="room" data-name="batanes">Batanes</span>
+      <span class="room" data-name="cagayan">Cagayan</span>
+      <span class="room" data-name="isabela">Isabela</span>
+      <span class="room" data-name="nueva vizcaya">Nueva Vizcaya</span>
+      <span class="room" data-name="quirino">Quirino</span>
+      </div>
+    </div>
+    <div class="region" data-region="region iii - central luzon">
+      <h2>REGION III - CENTRAL LUZON <span class="count">7 rooms</span></h2>
+      <div class="chips">
+      <span class="room" data-name="aurora">Aurora</span>
+      <span class="room" data-name="bataan">Bataan</span>
+      <span class="room" data-name="bulacan">Bulacan</span>
+      <span class="room" data-name="nueva ecija">Nueva Ecija</span>
+      <span class="room" data-name="pampanga">Pampanga</span>
+      <span class="room" data-name="tarlac">Tarlac</span>
+      <span class="room" data-name="zambales">Zambales</span>
+      </div>
+    </div>
+    <div class="region" data-region="region iv-a - calabarzon">
+      <h2>REGION IV-A - CALABARZON <span class="count">5 rooms</span></h2>
+      <div class="chips">
+      <span class="room" data-name="batangas">Batangas</span>
+      <span class="room" data-name="cavite">Cavite</span>
+      <span class="room" data-name="laguna">Laguna</span>
+      <span class="room" data-name="quezon">Quezon</span>
+      <span class="room" data-name="rizal">Rizal</span>
+      </div>
+    </div>
+    <div class="region" data-region="mimaropa region">
+      <h2>MIMAROPA REGION <span class="count">5 rooms</span></h2>
+      <div class="chips">
+      <span class="room" data-name="marinduque">Marinduque</span>
+      <span class="room" data-name="occidental mindoro">Occidental Mindoro</span>
+      <span class="room" data-name="oriental mindoro">Oriental Mindoro</span>
+      <span class="room" data-name="palawan">Palawan</span>
+      <span class="room" data-name="romblon">Romblon</span>
+      </div>
+    </div>
+    <div class="region" data-region="region v - bicol region">
+      <h2>REGION V - BICOL REGION <span class="count">6 rooms</span></h2>
+      <div class="chips">
+      <span class="room" data-name="albay">Albay</span>
+      <span class="room" data-name="camarines norte">Camarines Norte</span>
+      <span class="room" data-name="camarines sur">Camarines Sur</span>
+      <span class="room" data-name="catanduanes">Catanduanes</span>
+      <span class="room" data-name="masbate">Masbate</span>
+      <span class="room" data-name="sorsogon">Sorsogon</span>
+      </div>
+    </div>
+    <div class="region" data-region="region vi - western visayas">
+      <h2>REGION VI - WESTERN VISAYAS <span class="count">5 rooms</span></h2>
+      <div class="chips">
+      <span class="room" data-name="aklan">Aklan</span>
+      <span class="room" data-name="antique">Antique</span>
+      <span class="room" data-name="capiz">Capiz</span>
+      <span class="room" data-name="guimaras">Guimaras</span>
+      <span class="room" data-name="iloilo">Iloilo</span>
+      </div>
+    </div>
+    <div class="region" data-region="negros island region">
+      <h2>NEGROS ISLAND REGION <span class="count">3 rooms</span></h2>
+      <div class="chips">
+      <span class="room" data-name="negros occidental">Negros Occidental</span>
+      <span class="room" data-name="negros oriental">Negros Oriental</span>
+      <span class="room" data-name="siquijor">Siquijor</span>
+      </div>
+    </div>
+    <div class="region" data-region="region vii - central visayas">
+      <h2>REGION VII - CENTRAL VISAYAS <span class="count">2 rooms</span></h2>
+      <div class="chips">
+      <span class="room" data-name="bohol">Bohol</span>
+      <span class="room" data-name="cebu">Cebu</span>
+      </div>
+    </div>
+    <div class="region" data-region="region viii - eastern visayas">
+      <h2>REGION VIII - EASTERN VISAYAS <span class="count">6 rooms</span></h2>
+      <div class="chips">
+      <span class="room" data-name="biliran">Biliran</span>
+      <span class="room" data-name="eastern samar">Eastern Samar</span>
+      <span class="room" data-name="leyte">Leyte</span>
+      <span class="room" data-name="northern samar">Northern Samar</span>
+      <span class="room" data-name="samar">Samar</span>
+      <span class="room" data-name="southern leyte">Southern Leyte</span>
+      </div>
+    </div>
+    <div class="region" data-region="region ix - zamboanga peninsula">
+      <h2>REGION IX - ZAMBOANGA PENINSULA <span class="count">3 rooms</span></h2>
+      <div class="chips">
+      <span class="room" data-name="zamboanga del norte">Zamboanga del Norte</span>
+      <span class="room" data-name="zamboanga del sur">Zamboanga del Sur</span>
+      <span class="room" data-name="zamboanga sibugay">Zamboanga Sibugay</span>
+      </div>
+    </div>
+    <div class="region" data-region="region x - northern mindanao">
+      <h2>REGION X - NORTHERN MINDANAO <span class="count">5 rooms</span></h2>
+      <div class="chips">
+      <span class="room" data-name="bukidnon">Bukidnon</span>
+      <span class="room" data-name="camiguin">Camiguin</span>
+      <span class="room" data-name="lanao del norte">Lanao del Norte</span>
+      <span class="room" data-name="misamis occidental">Misamis Occidental</span>
+      <span class="room" data-name="misamis oriental">Misamis Oriental</span>
+      </div>
+    </div>
+    <div class="region" data-region="region xi - davao region">
+      <h2>REGION XI - DAVAO REGION <span class="count">5 rooms</span></h2>
+      <div class="chips">
+      <span class="room" data-name="davao de oro">Davao de Oro</span>
+      <span class="room" data-name="davao del norte">Davao del Norte</span>
+      <span class="room" data-name="davao del sur">Davao del Sur</span>
+      <span class="room" data-name="davao occidental">Davao Occidental</span>
+      <span class="room" data-name="davao oriental">Davao Oriental</span>
+      </div>
+    </div>
+    <div class="region" data-region="region xii - soccsksargen">
+      <h2>REGION XII - SOCCSKSARGEN <span class="count">4 rooms</span></h2>
+      <div class="chips">
+      <span class="room" data-name="cotabato">Cotabato</span>
+      <span class="room" data-name="sarangani">Sarangani</span>
+      <span class="room" data-name="south cotabato">South Cotabato</span>
+      <span class="room" data-name="sultan kudarat">Sultan Kudarat</span>
+      </div>
+    </div>
+    <div class="region" data-region="caraga">
+      <h2>CARAGA <span class="count">5 rooms</span></h2>
+      <div class="chips">
+      <span class="room" data-name="agusan del norte">Agusan del Norte</span>
+      <span class="room" data-name="agusan del sur">Agusan del Sur</span>
+      <span class="room" data-name="dinagat islands">Dinagat Islands</span>
+      <span class="room" data-name="surigao del norte">Surigao del Norte</span>
+      <span class="room" data-name="surigao del sur">Surigao del Sur</span>
+      </div>
+    </div>
+    <div class="region" data-region="bangsamoro autonomous region in muslim mindanao">
+      <h2>BANGSAMORO AUTONOMOUS REGION IN MUSLIM MINDANAO <span class="count">6 rooms</span></h2>
+      <div class="chips">
+      <span class="room" data-name="basilan">Basilan</span>
+      <span class="room" data-name="lanao del sur">Lanao del Sur</span>
+      <span class="room" data-name="maguindanao del norte">Maguindanao del Norte</span>
+      <span class="room" data-name="maguindanao del sur">Maguindanao del Sur</span>
+      <span class="room" data-name="sulu">Sulu</span>
+      <span class="room" data-name="tawi-tawi">Tawi-Tawi</span>
+      </div>
+    </div>
+    <div class="region" data-region="national capital region">
+      <h2>NATIONAL CAPITAL REGION <span class="count">1 rooms</span></h2>
+      <div class="chips">
+      <span class="room" data-name="metro manila">Metro Manila</span>
+      </div>
+    </div>  </div>
+  <div class="cta">
+    <p>Found home? Grab the app and jump in.</p>
+    <a class="btn" href="https://github.com/cyanideph/UzzapAndroid/releases/download/debug-latest/app-debug.apk">⬇&nbsp; DOWNLOAD APK</a>
+  </div>
+</div>
+<footer>
+  <div class="wrap">
+    <div>
+      <a class="flink" href="index.html">Home</a>
+      <a class="flink" href="rooms.html">Rooms</a>
+      <a class="flink" href="privacy.html">Privacy Policy</a>
+      <a class="flink" href="delete-account.html">Delete Account</a>
+    </div>
+    <div style="margin-top:14px"><b style="font-family:var(--px);font-size:12px;color:var(--green)">UZZAP</b> — Modern Recreation by CY · 2026</div>
+    <p class="fine">Room list mirrors the in-app catalogue. Live occupancy is shown inside the app. This is an independent, unofficial recreation.</p>
+  </div>
+</footer>
+<script>
+(function(){
+  var q = document.getElementById('q');
+  q.addEventListener('input', function(){
+    var needle = q.value.trim().toLowerCase();
+    document.querySelectorAll('#regions .region').forEach(function(region){
+      var regionName = region.getAttribute('data-region');
+      var regionHit = !needle || regionName.indexOf(needle) !== -1;
+      var anyRoom = false;
+      region.querySelectorAll('.room').forEach(function(room){
+        var hit = !needle || regionHit || room.getAttribute('data-name').indexOf(needle) !== -1;
+        room.classList.toggle('hidden', !hit);
+        if (hit) anyRoom = true;
+      });
+      region.classList.toggle('hidden', !anyRoom);
+    });
+  });
+})();
+</script>
+</body>
+</html>
